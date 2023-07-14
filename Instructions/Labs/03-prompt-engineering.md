@@ -40,7 +40,8 @@ Para usar a API de OpenAI do Azure, primeiro você precisa implantar um modelo a
 
 1. Na página **Visão geral** do recurso OpenAI do Azure, use o botão **Explorar** para abrir o Azure OpenAI Studio em uma nova guia do navegador. Como alternativa, navegue diretamente até o [Azure OpenAI Studio](https://oai.azure.com/?azure-portal=true).
 2. No Azure OpenAI Studio, crie uma implantação com as seguintes configurações:
-    - **Nome do modelo**: gpt-35-turbo
+    - **Modelo**: gpt-35-turbo
+    - **Versão do modelo**: *usar a versão padrão*
     - **Nome da implantação**: text-turbo
 
 > **Observação**: cada modelo do OpenAI do Azure é otimizado para um equilíbrio diferente de funcionalidades e desempenho. Usaremos a série de modelos **3.5 Turbo** na família de modelos **GPT-3** neste exercício, que é altamente capaz de entender a linguagem. Este exercício usa apenas um modelo, no entanto, a implantação e o uso de outros modelos implantados funcionarão da mesma maneira.
