@@ -304,7 +304,7 @@ Cada prompt é exibido no console conforme ele envia para você ver como as dife
 1. Em seguida, escolha a opção **3** para solicitar um email semelhante ao acima, mas com uma tabela formatada com animais adicionais incluídos.
 1. Observe a entrada do prompt e a saída gerada. Desta vez, você provavelmente verá um email semelhante com texto formatado de uma maneira específica (nesse caso, uma tabela perto do final) demonstrando como os modelos de IA generativos podem formatar a saída quando solicitados.
 1. Em seguida, escolha a opção **4** para solicitar um email semelhante, mas desta vez especificando um tom diferente na mensagem do sistema.
-1. Observe a entrada do prompt e a saída gerada. Desta vez, você provavelmente verá o email em um formato semelhante, mas com um tom muito menos informal. Você provavelmente até verá piadas incluídas.
+1. Observe a entrada do prompt e a saída gerada. Desta vez, você provavelmente verá o email em um formato semelhante, mas com um tom muito mais informal. Você provavelmente até verá piadas incluídas.
 
 Aumentar a temperatura geralmente faz com que a resposta varie, mesmo quando fornecido o mesmo prompt, devido ao aumento da aleatoriedade. Você pode executá-lo várias vezes com diferentes valores de temperatura ou top_p para ver como isso afeta a resposta para o mesmo prompt.
 
