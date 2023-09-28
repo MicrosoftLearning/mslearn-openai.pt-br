@@ -80,17 +80,19 @@ Em seguida, adicione seus dados no playground de chat para ver como ele responde
     - **Tipo de preço**: Básico
 
 1. Aguarde até que o recurso de pesquisa tenha sido implantado e, em seguida, volte para o Azure AI Studio e atualize a página.
-1. Em **Adicionar dados**, insira os valores a seguir para sua fonte de dados.
+1. Em **Adicionar dados**, insira os seguintes valores para a fonte de dados e selecione **Avançar**.
 
     - **Selecionar fonte de dados**: carregar arquivos
     - **Selecionar o recurso de Armazenamento de Blobs do Azure**: *escolha o recurso de armazenamento que você criou*
         - Ativar o CORS quando solicitado
     - **Selecionar o recurso do Azure Cognitive Search**: *escolha o recurso de pesquisa que você criou*
     - **Inserir o nome do índice**: margiestravel
-    - Marque a caixa de seleção
+    - **Adicionar busca em vetores a este recurso de pesquisa**: desmarcado
+    - **Reconheço que conectar-se a uma conta do Azure Cognitive Search incorrerá em uso para minha conta** : verificado
 
-1. Na página **Carregar arquivos**, carregue os PDFs que você baixou.
-1. Selecione **Salvar e fechar**, o que adicionará seus dados. Isso pode levar alguns minutos, durante os quais você precisa deixar a janela aberta. Após a conclusão, você verá a fonte de dados, o recurso de pesquisa e o índice especificados no painel **Configuração do assistente**.
+1. Na página **Upload de arquivos**, carregue os PDFs que você baixou e selecione **Avançar**.
+1. Na página **Gerenciamento de dados**, selecione o tipo de pesquisa **Palavra-chave** no menu suspenso e, em seguida, **Avançar**.
+1. Na página **Revisar e concluir** selecione **Salvar e fechar**, que adicionará seus dados. Isso pode levar alguns minutos, durante os quais você precisa deixar a janela aberta. Após a conclusão, você verá a fonte de dados, o recurso de pesquisa e o índice especificados no painel **Configuração do assistente**.
 
 ## Conversar com um modelo fundamentado em seus dados
 
