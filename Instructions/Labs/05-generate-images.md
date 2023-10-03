@@ -24,7 +24,7 @@ Antes de usar os modelos do OpenAI do Azure, você precisa provisionar um recurs
 2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
     - **Assinatura**: uma assinatura do Azure aprovada para acessar o serviço OpenAI do Azure.
     - **Grupo de recursos**: crie um grupo de recursos com um nome de sua escolha.
-    - **Região**: escolha qualquer região disponível.
+    - **Região**: escolha **EastUS** como a região
     - **Nome**: um nome exclusivo de sua preferência.
     - **Tipo de preço**: Standard S0
 3. Aguarde o fim da implantação. Em seguida, vá para o recurso OpenAI do Azure implantado no portal do Azure.
