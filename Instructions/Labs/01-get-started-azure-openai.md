@@ -33,10 +33,10 @@ Antes de usar os modelos do OpenAI do Azure, você precisa provisionar um recurs
 
 O OpenAI do Azure fornece um portal baseado na Web chamado **Azure OpenAI Studio**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Azure OpenAI Studio para implantar um modelo.
 
-1. Na página **Visão geral** do recurso OpenAI do Azure, use o botão **Explorar** para abrir o Azure OpenAI Studio em uma nova guia do navegador.
+1. Na página **Visão geral** do recurso OpenAI do Azure, use o botão **Vá para o OpenAI do Azure**  para abrir o Est do OpenAI do Azure em uma nova guia do navegador.
 2. No Azure OpenAI Studio, crie uma implantação com as seguintes configurações:
     - **Modelo**: gpt-35-turbo
-    - **Versão do Modev**: atualização automática para padrão
+    - **Versão do Modelo**: atualização automática para padrão
     - **Nome da implantação**: my-gpt-model
 
 > **Observação**: o OpenAI do Azure inclui vários modelos, cada um otimizado para um equilíbrio diferente de funcionalidades e desempenho. Neste exercício, você usará o modelo **GPT-35-Turbo**, um bom modelo geral que resume e gera linguagem natural e código. Para obter mais informações sobre os modelos disponíveis no OpenAI do Azure, consulte [Modelos](https://learn.microsoft.com/azure/cognitive-services/openai/concepts/models) na documentação do Azure OpenAI.
