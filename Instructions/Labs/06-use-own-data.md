@@ -23,7 +23,7 @@ Antes de usar os modelos do OpenAI do Azure, você precisa provisionar um recurs
 1. Faça logon no [Portal do Azure](https://portal.azure.com?azure-portal=true).
 2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
     - **Assinatura**: uma assinatura do Azure aprovada para acessar o serviço OpenAI do Azure.
-    - **Grupo de recursos**: crie um grupo de recursos com um nome de sua escolha.
+    - **Grupo de recursos**: escolha um grupo de recursos existente ou crie um novo com um nome de sua escolha.
     - **Região**: escolha qualquer região disponível.
     - **Nome**: um nome exclusivo de sua preferência.
     - **Tipo de preço**: Standard S0
@@ -98,11 +98,11 @@ Em seguida, adicione seus dados no playground de chat para ver como ele responde
 
 Agora que você adicionou seus dados, faça as mesmas perguntas que fez anteriormente e veja como a resposta difere.
 
-```code
+```
 I'd like to take a trip to New York. Where should I stay?
 ```
 
-```code
+```
 What are some facts about New York?
 ```
 
