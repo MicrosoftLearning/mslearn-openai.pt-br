@@ -23,7 +23,7 @@ Antes de usar os modelos do OpenAI do Azure, você precisa provisionar um recurs
 1. Faça logon no [Portal do Azure](https://portal.azure.com).
 2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
     - **Assinatura**: uma assinatura do Azure aprovada para acessar o serviço OpenAI do Azure.
-    - **Grupo de recursos**: crie um grupo de recursos com um nome de sua escolha.
+    - **Grupo de recursos**: escolha um grupo de recursos existente ou crie um novo com um nome de sua escolha.
     - **Região**: escolha **EastUS** como a região
     - **Nome**: um nome exclusivo de sua preferência.
     - **Tipo de preço**: Standard S0
@@ -58,7 +58,15 @@ Neste exercício, você usará um aplicativo Python ou Microsoft C# simples para
 
 2. Na primeira vez que você abrir o Cloud Shell, talvez precise escolher o tipo de shell que deseja usar (*Bash* ou *PowerShell).* Selecione **Bash**. Se não vir essa opção, ignore a etapa.  
 
-3. Se você precisar criar o armazenamento para o Cloud Shell, verifique se sua assinatura está especificada e selecione **Criar armazenamento**. Aguarde um minuto para a criação do armazenamento.
+3. Se for solicitado que você crie armazenamento para o Cloud Shell, selecione **Mostrar configurações avançadas** e selecione as seguintes configurações:
+    - **Assinatura**: sua assinatura
+    - **Regiões do Cloud Shell**: escolha qualquer região disponível
+    - **Mostrar configurações de isolamento de VNET** Desmarcado
+    - **Grupo de recursos**: use o grupo de recursos existente em que você provisionou o recurso do Azure OpenAI
+    - **Conta de armazenamento**: crie uma nova conta de armazenamento com um nome exclusivo
+    - **Compartilhamento de arquivos**: crie um novo compartilhamento de arquivos com um nome exclusivo
+
+    Aguarde um minuto para a criação do armazenamento.
 
     > **Observação**: se você já tiver um cloud shell configurado em sua assinatura do Azure, talvez seja necessário usar a opção **Redefinir configurações do usuário** no menu ⚙️ para garantir que as versões mais recentes do Python e do .NET Framework estejam instaladas.
 
