@@ -75,8 +75,8 @@ Neste exercício, você usará um aplicativo Python ou Microsoft C# simples para
 5. Depois que o terminal for iniciado, insira o comando a seguir para baixar o código do aplicativo com o qual você trabalhará.
 
     ```bash
-   rm -r azure-openai -f
-   git clone https://github.com/MicrosoftLearning/mslearn-openai azure-openai
+    rm -r azure-openai -f
+    git clone https://github.com/MicrosoftLearning/mslearn-openai azure-openai
     ```
 
     Os arquivos são baixados para uma pasta chamada **azure-openai**. Os aplicativos para C# e Python foram fornecidos. Ambos os aplicativos apresentam a mesma funcionalidade.
@@ -86,20 +86,22 @@ Neste exercício, você usará um aplicativo Python ou Microsoft C# simples para
     **Python**
 
     ```bash
-   cd azure-openai/Labfiles/05-image-generation/Python
+    cd azure-openai/Labfiles/05-image-generation/Python
     ```
 
     **C#**
 
     ```bash
-   cd azure-openai/Labfiles/05-image-generation/CSharp
+    cd azure-openai/Labfiles/05-image-generation/CSharp
     ```
 
 7. Use o comando a seguir para abrir o editor de código interno e ver os arquivos de código com os quais você trabalhará.
 
     ```bash
-   code .
+    code .
     ```
+
+    > **Dica**: consulte a [documentação do editor de código do cloud shell do Azure](https://learn.microsoft.com/azure/cloud-shell/using-cloud-shell-editor) para obter mais detalhes sobre como usá-lo para trabalhar com arquivos no ambiente do cloud shell do Azure.
 
 ### Configurar seu aplicativo
 
@@ -117,7 +119,7 @@ O aplicativo usa um arquivo de configuração para armazenar os detalhes necess�
 3. Se você estiver usando o **Python**, também precisará instalar o pacote **python-dotenv** usado para ler o arquivo de configuração. No painel de prompt do console, verifique se a pasta atual é **~/azure-openai/Labfiles/05-image-generation/Python**. Em seguida, insira este comando:
 
     ```bash
-   pip install python-dotenv
+    pip install python-dotenv
     ```
 
 ### Exibir código do aplicativo
@@ -148,13 +150,13 @@ Agora que você revisou o código, é hora de executá-lo e gerar algumas imagen
     **Python**
 
     ```bash
-   python generate-image.py
+    python generate-image.py
     ```
 
     **C#**
 
     ```bash
-   dotnet run
+    dotnet run
     ```
 
 2. Quando solicitado, insira uma descrição para uma imagem. Por exemplo, *Uma girafa empinando pipa*.

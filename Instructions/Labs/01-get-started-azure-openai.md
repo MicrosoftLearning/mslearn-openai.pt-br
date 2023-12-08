@@ -34,35 +34,24 @@ Antes de usar os modelos do OpenAI do Azure, você precisa provisionar um recurs
 O OpenAI do Azure fornece um portal baseado na Web chamado **Azure OpenAI Studio**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Azure OpenAI Studio para implantar um modelo.
 
 1. Na página **Visão geral** do recurso OpenAI do Azure, use o botão **Vá para o OpenAI do Azure**  para abrir o Est do OpenAI do Azure em uma nova guia do navegador.
-2. No Azure OpenAI Studio, crie uma implantação com as seguintes configurações:
-    - **Modelo**: gpt-35-turbo
+2. No Azure OpenAI Studio, na página **Implantações**, exiba suas implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+    - **Modelo**: gpt-35-turbo-16k
     - **Versão do Modelo**: atualização automática para padrão
-    - **Nome da implantação**: my-gpt-model
+    - **Nome de implantação**: *um nome exclusivo de sua preferência*
+    - **Opções avançadas**
+        - **Filtro de conteúdo**: Padrão
+        - **Limite de taxa de tokens por minuto**: 5K\*
+        - **Habilitar cota dinâmica**: Habilitado
 
-> **Observação**: o OpenAI do Azure inclui vários modelos, cada um otimizado para um equilíbrio diferente de funcionalidades e desempenho. Neste exercício, você usará o modelo **GPT-35-Turbo**, um bom modelo geral que resume e gera linguagem natural e código. Para obter mais informações sobre os modelos disponíveis no OpenAI do Azure, consulte [Modelos](https://learn.microsoft.com/azure/cognitive-services/openai/concepts/models) na documentação do Azure OpenAI.
+    > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
-## Explorar um modelo no playground Preenchimentos
-
-*Playgrounds* são interfaces úteis do Estúdio OpenAI do Azure que você pode usar para experimentar seus modelos implantados sem a necessidade de desenvolver seu aplicativo cliente.
-
-1. No Azure OpenAI Studio, no painel esquerdo em **Playground**, selecione **Preenchimentos**.
-2. Na página **Preenchimentos**, verifique se a implantação de **my-gpt-model** está selecionada e, na lista **Exemplos**, selecione **Gerar um quiz**.
-
-    O exemplo de texto resumido consiste em um *prompt* que fornece um texto para informar ao modelo que tipo de resposta é necessária e incluir algumas informações contextuais.
-
-3. Na parte inferior da página, observe o número de *tokens* detectados no texto. Os tokens são as unidades básicas de um prompt – essencialmente palavras ou partes de palavras no texto.
-4. Use o botão **Gerar** para enviar o prompt para o modelo e recuperar uma resposta.
-
-    A resposta consiste em um teste com base no exemplo no prompt.
-
-5. Use o botão **Regenerar** para reenviar o prompt e observe que a resposta pode variar em relação à original. Um modelo de IA generativo pode produzir uma nova linguagem sempre que é chamado.
-6. Use o botão **Exibir Código** para exibir o código que um aplicativo cliente usaria para enviar o prompt. Você pode selecionar a linguagem de programação da sua preferência. O prompt contém o texto enviado ao modelo. A solicitação é enviada à API *Completions* para o serviço OpenAI do Azure.
+> **Observação**: em algumas regiões, a nova interface de implantação do modelo não mostra a opção **Versão do modelo**. Nesse caso, não se preocupe e continue sem definir a opção.
 
 ## Usar o playground Chat
 
 O playground *Chat* fornece uma interface de chatbot para modelos GPT 3.5 e superiores. Ele usa a API *ChatCompletions* em vez da API *Completions* mais antiga.
 
-1. Na seção **Playground**, selecione a página **Chat** e verifique se o modelo **my-gpt-model** está selecionado no painel de configuração à direita.
+1. Na seção **Playground**, selecione a página **Chat** e verifique se o seu modelo está selecionado no painel de configuração.
 2. Na seção **Configuração do assistente**, na caixa **Mensagem do sistema**, substitua o texto atual pela seguinte instrução: `The system is an AI teacher that helps people learn about AI`.
 
 3. Abaixo da caixa **Mensagem** do sistema, clique em **Adicionar exemplos de poucos disparos** e insira a seguinte mensagem e resposta nas caixas designadas:
@@ -88,7 +77,7 @@ Você pode usar o prompt e os parâmetros para maximizar a probabilidade de gera
 
 1. No painel **Parâmetros**, defina os seguintes valores de parâmetro:
     - **Temperatura**: 0
-    - **Comprimento máximo (tokens)** : 500
+    - **Número máximo de respostas**: 500
 
 2. Enviar a mensagem a seguir
 
