@@ -55,7 +55,7 @@ Para usar a API de OpenAI do Azure, primeiro você precisa implantar um modelo a
 Antes de usar seu aplicativo, examine como a engenharia de prompt aprimora a resposta do modelo no playground. Neste primeiro exemplo, imagine que você está tentando escrever um aplicativo Python de animais com nomes divertidos.
 
 1. No [Azure OpenAI Studio](https://oai.azure.com/?azure-portal=true), navegue até o playground **Chat** no painel esquerdo.
-1. Na **Configuração**, verifique se a implantação do modelo está selecionada.
+1. Na **Configuração**, verifique se sua implantação de modelo está selecionada.
 1. Na seção **Configuração do Assistente** na parte superior, insira `You are a helpful AI assistant` como a mensagem do sistema.
 1. Na seção **Sessão de chat**, insira o prompt a seguir e pressione *Enter*.
 
