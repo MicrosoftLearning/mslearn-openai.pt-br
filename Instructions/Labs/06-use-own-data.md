@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Use dados próprios com o OpenAI do Azure
+  title: Use seus próprios dados com o OpenAI do Azure
 ---
 
 # Use dados próprios com o OpenAI do Azure
@@ -71,7 +71,7 @@ Em seguida, adicione seus dados no playground de chat para ver como ele responde
 1. [Baixe os dados](https://aka.ms/own-data-brochures) que você usará do GitHub. Extraia os PDFs no `.zip` fornecido.
 1. Navegue até o playground **Chat** e selecione *Adicionar seus dados* no painel Configuração do assistente.
 1. Selecione **Adicionar uma fonte de dados** e escolha *Carregar arquivos* na lista suspensa.
-1. Você precisará criar uma conta de armazenamento e um recurso do Azure Cognitive Search. Na lista suspensa do recurso de armazenamento, selecione **Criar um recurso de Armazenamento de Blobs do Azure** e crie uma conta de armazenamento com as configurações a seguir. Deixe qualquer coisa não especificada com o valor padrão.
+1. Você precisará criar uma conta de armazenamento e um recurso de pesquisa da IA do Azure. Na lista suspensa do recurso de armazenamento, selecione **Criar um recurso de Armazenamento de Blobs do Azure** e crie uma conta de armazenamento com as configurações a seguir. Deixe qualquer coisa não especificada com o valor padrão.
 
     - **Assinatura**: *a mesma assinatura do recurso OpenAI do Azure*
     - **Grupo de recursos**: *o mesmo grupo de recursos que o do recurso do Azure OpenAI*
@@ -79,7 +79,7 @@ Em seguida, adicione seus dados no playground de chat para ver como ele responde
     - **Região**: *a mesma região que o recurso OpenAI do Azure*
     - **Redundância**: LRS (armazenamento com redundância local)
 
-1. Depois que o recurso estiver sendo criado, volte para o Azure OpenAI Studio e selecione **Criar um recurso de Azure Cognitive Search** com as configurações a seguir. Deixe qualquer coisa não especificada com o valor padrão.
+1. Depois que o recurso tiver sido criado, volte para o Estúdio do OpenAI do Azure e selecione **Criar um novo recurso de Pesquisa de IA do Azure** com as configurações a seguir. Deixe qualquer coisa não especificada com o valor padrão.
 
     - **Assinatura**: *a mesma assinatura do recurso OpenAI do Azure*
     - **Grupo de recursos**: *o mesmo grupo de recursos que o do recurso do Azure OpenAI*
@@ -93,10 +93,10 @@ Em seguida, adicione seus dados no playground de chat para ver como ele responde
     - **Selecionar fonte de dados**: carregar arquivos
     - **Selecionar o recurso de Armazenamento de Blobs do Azure**: *escolha o recurso de armazenamento que você criou*
         - Ativar o CORS quando solicitado
-    - **Selecionar o recurso do Azure Cognitive Search**: *escolha o recurso de pesquisa que você criou*
+    - **Selecionar o recurso de Pesquisa de IA do Azure**: *escolha o recurso de pesquisa que você criou*
     - **Inserir o nome do índice**: margiestravel
     - **Adicionar busca em vetores a este recurso de pesquisa**: desmarcado
-    - **Reconheço que conectar-se a uma conta do Azure Cognitive Search incorrerá em uso para minha conta** : verificado
+    - **Reconheço que a conexão a uma conta de Pesquisa de IA do Azure incorrerá no uso da minha conta**: verificado
 
 1. Na página **Upload de arquivos**, carregue os PDFs que você baixou e selecione **Avançar**.
 1. Na página **Gerenciamento de dados**, selecione o tipo de pesquisa **Palavra-chave** no menu suspenso e, em seguida, **Avançar**.
@@ -236,6 +236,6 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
 
 1. Envie o prompt `Tell me about London` e você verá a resposta fazendo referência aos seus dados.
 
-## Limpar
+## Limpeza
 
 Quando terminar de usar o recurso OpenAI do Azure, lembre-se de excluir o recurso no [portal do Azure](https://portal.azure.com/?azure-portal=true). Inclua também a conta de armazenamento e o recurso de pesquisa, pois eles podem incorrer em um custo relativamente grande.
