@@ -1,81 +1,81 @@
 ---
 lab:
-    title: 'Use Azure OpenAI SDKs in your app'
+  title: Usar SDKs do Azure OpenAI em seu aplicativo
 ---
 
-# Use Azure OpenAI APIs in your app
+# Usar APIs do Azure OpenAI em seu aplicativo
 
-With the Azure OpenAI Service, developers can create chatbots, language models, and other applications that excel at understanding natural human language. The Azure OpenAI provides access to pre-trained AI models, as well as a suite of APIs and tools for customizing and fine-tuning these models to meet the specific requirements of your application. In this exercise, you'll learn how to deploy a model in Azure OpenAI and use it in your own application.
+Com o Serviço OpenAI do Azure, os desenvolvedores podem criar chatbots, modelos de linguagem e outros aplicativos que se destacam na compreensão da linguagem humana natural. O OpenAI do Azure fornece acesso a modelos de IA pré-treinados, bem como um conjunto de APIs e ferramentas para personalizar e ajustar esses modelos para atender aos requisitos específicos do seu aplicativo. Neste exercício, você aprenderá a implantar um modelo no OpenAI do Azure e usá-lo em seu aplicativo para resumir texto.
 
-In the scenario for this exercise, you will perform the role of a software developer who has been tasked to implement an app that can use generative AI to help provide hiking recommendations. The techniques used in the exercise can be applied to any app that wants to use Azure OpenAI APIs.
+No cenário deste exercício, você executará a função de um desenvolvedor de software que foi encarregado de implementar um aplicativo que pode usar a IA generativa para ajudar a fornecer recomendações de caminhada. As técnicas usadas no exercício podem ser aplicadas a qualquer aplicativo que queira usar APIs do OpenAI do Azure.
 
-This exercise will take approximately **30** minutes.
+Este exercício levará aproximadamente **30** minutos.
 
-## Provision an Azure OpenAI resource
+## Provisionar um recurso de OpenAI do Azure
 
-If you don't already have one, provision an Azure OpenAI resource in your Azure subscription.
+Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura do Azure.
 
-1. Sign into the **Azure portal** at `https://portal.azure.com`.
-2. Create an **Azure OpenAI** resource with the following settings:
-    - **Subscription**: *Select an Azure subscription that has been approved for access to the Azure OpenAI service*
-    - **Resource group**: *Choose or create a resource group*
-    - **Region**: *Make a **random** choice from any of the following regions*\*
-        - Australia East
-        - Canada East
-        - East US
-        - East US 2
-        - France Central
-        - Japan East
-        - North Central US
-        - Sweden Central
-        - Switzerland North
-        - UK South
-    - **Name**: *A unique name of your choice*
-    - **Pricing tier**: Standard S0
+1. Entre no **portal do Azure** em `https://portal.azure.com`.
+2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
+    - **Assinatura**: *Selecione uma assinatura do Azure que tenha sido aprovada para acesso ao serviço Azure OpenAI*
+    - **Grupo de recursos**: *escolher ou criar um grupo de recursos*
+    - **Região**: *faça uma escolha **aleatória** de uma das regiões a seguir*\*
+        - Leste da Austrália
+        - Leste do Canadá
+        - Leste dos EUA
+        - Leste dos EUA 2
+        - França Central
+        - Leste do Japão
+        - Centro-Norte dos EUA
+        - Suécia Central
+        - Norte da Suíça
+        - Sul do Reino Unido
+    - **Nome**: *um nome exclusivo de sua preferência*
+    - **Tipo de preço**: Standard S0
 
-    > \* Azure OpenAI resources are constrained by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a subscription with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Os recursos do OpenAI do Azure são restritos por cotas regionais. As regiões listadas incluem a cota padrão para os tipos de modelos usados neste exercício. A escolha aleatória de uma região reduz o risco de uma só região atingir o limite de cota em cenários nos quais você compartilha uma assinatura com outros usuários. No caso de um limite de cota ser atingido mais adiante no exercício, há a possibilidade de você precisar criar outro recurso em uma região diferente.
 
-3. Wait for deployment to complete. Then go to the deployed Azure OpenAI resource in the Azure portal.
+3. Aguarde o fim da implantação. Em seguida, vá para o recurso OpenAI do Azure implantado no portal do Azure.
 
-## Deploy a model
+## Implantar um modelo
 
-Azure OpenAI provides a web-based portal named **Azure OpenAI Studio**, that you can use to deploy, manage, and explore models. You'll start your exploration of Azure OpenAI by using Azure OpenAI Studio to deploy a model.
+O OpenAI do Azure fornece um portal baseado na Web chamado **Azure OpenAI Studio**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Azure OpenAI Studio para implantar um modelo.
 
-1. On the **Overview** page for your Azure OpenAI resource, use the **Go to Azure OpenAI Studio** button to open Azure OpenAI Studio in a new browser tab.
-2. In Azure OpenAI Studio, on the **Deployments** page, view your existing model deployments. If you don't already have one, create a new deployment of the **gpt-35-turbo-16k** model with the following settings:
-    - **Model**: gpt-35-turbo-16k *(if the 16k model isn't available, choose gpt-35-turbo)*
-    - **Model version**: Auto-update to default
-    - **Deployment name**: *A unique name of your choice. You'll use this name later in the lab.*
-    - **Advanced options**
-        - **Content filter**: Default
-        - **Deployment type**: Standard
-        - **Tokens per minute rate limit**: 5K\*
-        - **Enable dynamic quota**: Enabled
+1. Na página **Visão geral** do recurso OpenAI do Azure, use o botão **Vá para o OpenAI do Azure**  para abrir o Est do OpenAI do Azure em uma nova guia do navegador.
+2. No Azure OpenAI Studio, na página **Implantações**, exiba suas implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+    - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
+    - **Versão do Modelo**: atualização automática para padrão
+    - **Nome da implantação**: *Um nome exclusivo de sua escolha. Você usará esse nome posteriormente no laboratório.*
+    - **Opções avançadas**
+        - **Filtro de conteúdo**: Padrão
+        - **Tipo de implantação**: Padrão
+        - **Limite de taxa de tokens por minuto**: 5K\*
+        - **Habilitar cota dinâmica**: Habilitado
 
-    > \* A rate limit of 5,000 tokens per minute is more than adequate to complete this exercise while leaving capacity for other people using the same subscription.
+    > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
-## Prepare to develop an app in Visual Studio Code
+## Preparar-se para desenvolver um aplicativo no Visual Studio Code
 
-You'll develop your Azure OpenAI app using Visual Studio Code. The code files for your app have been provided in a GitHub repo.
+Você desenvolverá seu aplicativo do OpenAI do Azure usando o Visual Studio Code. Os arquivos de código do seu aplicativo foram fornecidos em um repositório do GitHub.
 
-> **Tip**: If you have already cloned the **mslearn-openai** repo, open it in Visual Studio code. Otherwise, follow these steps to clone it to your development environment.
+> **Dica**: Se você já clonou o repositório **mslearn-openai**, abra-o no código do Visual Studio. Caso contrário, siga estas etapas para cloná-lo em seu ambiente de desenvolvimento.
 
-1. Start Visual Studio Code.
-2. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/mslearn-openai` repository to a local folder (it doesn't matter which folder).
-3. When the repository has been cloned, open the folder in Visual Studio Code.
+1. Inicie o Visual Studio Code.
+2. Abra a paleta (SHIFT+CTRL+P) e execute o comando **Git: Clone** para clonar o repositório `https://github.com/MicrosoftLearning/mslearn-openai` em uma pasta local (não importa qual pasta).
+3. Depois que o repositório for clonado, abra a pasta no Visual Studio Code.
 
-    > **Note**: If Visual Studio Code shows you a pop-up message to prompt you to trust the code you are opening, click on **Yes, I trust the authors** option in the pop-up.
+    > **Observação**: Se o Visual Studio Code mostrar uma mensagem pop-up para solicitar que você confie no código que está abrindo, clique na opção **Sim, confio nos autores** no pop-up.
 
-4. Wait while additional files are installed to support the C# code projects in the repo.
+4. Aguarde enquanto os arquivos adicionais são instalados para dar suporte aos projetos de código C# no repositório.
 
-    > **Note**: If you are prompted to add required assets to build and debug, select **Not Now**.
+    > **Observação**: se você for solicitado a adicionar os ativos necessários para compilar e depurar, selecione **Agora não**.
 
-## Configure your application
+## Configurar seu aplicativo
 
-Applications for both C# and Python have been provided. Both apps feature the same functionality. First, you'll complete some key parts of the application to enable using your Azure OpenAI resource.
+Os aplicativos para C# e Python foram fornecidos. Ambos os aplicativos apresentam a mesma funcionalidade. Primeiro, você concluirá algumas partes-chave do aplicativo para habilitar o uso do recurso do OpenAI do Azure.
 
-1. In Visual Studio Code, in the **Explorer** pane, browse to the **Labfiles/02-azure-openai-api** folder and expand the **CSharp** or **Python** folder depending on your language preference. Each folder contains the language-specific files for an app into which you're going to integrate Azure OpenAI functionality.
-2. Right-click the **CSharp** or **Python** folder containing your code files and open an integrated terminal. Then install the Azure OpenAI SDK package by running the appropriate command for your language preference:
+1. No Visual Studio Code, no painel do **Explorer**, navegue até a pasta **Labfiles/02-code-generation** e expanda a pasta **CSharp** ou **Python**, dependendo da sua preferência de idioma. Cada pasta contém os arquivos específicos do idioma de um aplicativo no qual você integrará a funcionalidade do Azure OpenAI.
+2. Clique com o botão direito na pasta **CSharp** ou **Python** que contém seus arquivos de código e abra um terminal integrado. Em seguida, instale o pacote do SDK do OpenAI do Azure executando o comando apropriado para sua preferência de idioma:
 
     **C#**:
 
@@ -89,21 +89,21 @@ Applications for both C# and Python have been provided. Both apps feature the sa
     pip install openai==1.13.3
     ```
 
-3. In the **Explorer** pane, in the **CSharp** or **Python** folder, open the configuration file for your preferred language
+3. No painel **Explorer**, na pasta **CSharp** ou **Python**, abra o arquivo de configuração do seu idioma preferido
 
     - **C#**: appsettings.json
     - **Python**: .env
     
-4. Update the configuration values to include:
-    - The  **endpoint** and a **key** from the Azure OpenAI resource you created (available on the **Keys and Endpoint** page for your Azure OpenAI resource in the Azure portal)
-    - The **deployment name** you specified for your model deployment (available in the **Deployments** page in Azure OpenAI Studio).
-5. Save the configuration file.
+4. Atualize os valores da configuração para incluir:
+    - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
+    - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Azure OpenAI Studio).
+5. Salve o arquivo de configuração.
 
-## Add code to use the Azure OpenAI service
+## Adicione código para usar o serviço Azure OpenAI
 
-Now you're ready to use the Azure OpenAI SDK to consume your deployed model.
+Agora você está pronto para usar o SDK do Azure OpenAI para consumir seu modelo implantado.
 
-1. In the **Explorer** pane, in the **CSharp** or **Python** folder, open the code file for your preferred language, and replace the comment ***Add Azure OpenAI package*** with code to add the Azure OpenAI SDK library:
+1. No painel **Explorer**, na pasta **CSharp** ou **Python**, abra o arquivo de código para seu idioma preferido e substitua o comentário ***Adicionar pacote Azure OpenAI*** pelo código para adicionar a biblioteca Azure OpenAI SDK:
 
     **C#**: Program.cs
 
@@ -119,7 +119,7 @@ Now you're ready to use the Azure OpenAI SDK to consume your deployed model.
     from openai import AzureOpenAI
     ```
 
-1. In the application code for your language, replace the comment ***Initialize the Azure OpenAI client...*** with the following code to initialize the client and define our system message.
+1. No código do aplicativo para seu idioma, substitua o comentário ***Inicializar o cliente do Azure OpenAI...*** pelo código a seguir para inicializar o cliente e definir nossa mensagem do sistema.
 
     **C#**: Program.cs
 
@@ -149,7 +149,7 @@ Now you're ready to use the Azure OpenAI SDK to consume your deployed model.
         """
     ```
 
-1. Replace the comment ***Add code to send request...*** with the necessary code for building the request; specifying the various parameters for your model such as `messages` and `temperature`.
+1. Substitua o comentário ***Adicionar código para enviar solicitação...*** pelo código necessário para compilar a solicitação; especificando os vários parâmetros para seu modelo, como `messages` e `temperature`.
 
     **C#**: Program.cs
 
@@ -196,35 +196,35 @@ Now you're ready to use the Azure OpenAI SDK to consume your deployed model.
     print("Response: " + generated_text + "\n")
     ```
 
-1. Save the changes to your code file.
+1. Salve as alterações no arquivo de código.
 
-## Test your application
+## Teste seu aplicativo
 
-Now that your app has been configured, run it to send your request to your model and observe the response.
+Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitação ao modelo e observe a resposta.
 
-1. In the interactive terminal pane, ensure the folder context is the folder for your preferred language. Then enter the following command to run the application.
+1. No painel do terminal interativo, verifique se o contexto da pasta é a pasta da sua linguagem de preferência. Em seguida, insira o comando a seguir para executar o aplicativo.
 
-    - **C#**: `dotnet run`
+    - **C#** : `dotnet run`
     - **Python**: `python test-openai-model.py`
 
-    > **Tip**: You can use the **Maximize panel size** (**^**) icon in the terminal toolbar to see more of the console text.
+    > **Dica**: você pode usar o ícone **Maximizar tamanho do painel** (**^**) na barra de ferramentas do terminal para ver mais do texto do console.
 
-1. When prompted, enter the text `What hike should I do near Rainier?`.
-1. Observe the output, taking note that the response follows the guidelines provided in the system message you added to the *messages* array.
-1. Provide the prompt `Where should I hike near Boise? I'm looking for something of easy difficulty, between 2 to 3 miles, with moderate elevation gain.` and observe the output.
-1. In the code file for your preferred language, change the *temperature* parameter value in your request to **1.0** and save the file.
-1. Run the application again using the prompts above, and observe the output.
+1. Quando solicitado, insira o texto `What hike should I do near Rainier?`.
+1. Observe a saída, observando que a resposta segue as diretrizes fornecidas na mensagem do sistema que você adicionou à matriz de *mensagens*.
+1. Forneça o prompt `Where should I hike near Boise? I'm looking for something of easy difficulty, between 2 to 3 miles, with moderate elevation gain.` e observe a saída.
+1. No arquivo de código do idioma preferido, altere o valor do *parâmetro de temperatura* em sua solicitação para **1,0** e salve o arquivo.
+1. Execute o aplicativo novamente usando os prompts acima e observe a saída.
 
-Increasing the temperature often causes the response to vary, even when provided the same text, due to the increased randomness. You can run it several times to see how the output may change. Try using different values for your temperature with the same input.
+Aumentar a temperatura geralmente faz com que a resposta varie, mesmo quando fornecido o mesmo prompt, devido ao aumento da aleatoriedade. Você pode executá-lo várias vezes para ver como a saída pode ser alterada. Tente usar valores diferentes para sua temperatura com a mesma entrada.
 
-## Maintain conversation history
+## Manter o histórico de conversas
 
-In most real-world applications, the ability to reference previous parts of the conversation allows for a more realistic interaction with an AI agent. The Azure OpenAI API is stateless by design, but by providing a history of the conversation in your prompt you enable the AI model to reference past messages.
+Na maioria dos aplicativos do mundo real, a capacidade de referenciar partes anteriores da conversa permite uma interação mais realista com um agente de IA. A API OpenAI do Azure é sem estado por design, mas ao fornecer um histórico da conversa em seu prompt, você permite que o modelo de IA faça referência a mensagens passadas.
 
-1. Run the app again and provide the prompt `Where is a good hike near Boise?`.
-1. Observe the output, and then prompt `How difficult is the second hike you suggested?`.
-1. The response from the model will likely indicate can't understand the hike you're referring to. To fix that, we can enable the model to have the past conversation messages for reference.
-1. In your application, we need to add the previous prompt and response to the future prompt we are sending. Below the definition of the **system message**, add the following code.
+1. Execute o aplicativo novamente e forneça o prompt `Where is a good hike near Boise?`.
+1. Observe a saída e, em seguida, solicite `How difficult is the second hike you suggested?`.
+1. A resposta do modelo provavelmente indicará que não é possível entender o aumento ao qual você está se referindo. Para corrigir isso, podemos permitir que o modelo tenha as mensagens de conversa anteriores para referência.
+1. Em seu aplicativo, precisamos adicionar o prompt e a resposta anteriores ao prompt futuro que estamos enviando. Abaixo da definição da **mensagem** do sistema, adicione o código a seguir.
 
     **C#**: Program.cs
 
@@ -243,7 +243,7 @@ In most real-world applications, the ability to reference previous parts of the 
     messages_array = [{"role": "system", "content": system_message}]
     ```
 
-1. Under the comment ***Add code to send request...***, replace all the code from the comment to the end of the **while** loop with the following code then save the file. The code is mostly the same, but now using the messages array to store the conversation history.
+1. Sob o comentário ***Adicionar código para enviar solicitação...***, substitua todo o código do comentário até o final do loop **while** pelo código a seguir e salve o arquivo. O código é basicamente o mesmo, mas agora está usando a matriz de mensagens para armazenar o histórico de conversas.
 
     **C#**: Program.cs
 
@@ -298,18 +298,18 @@ In most real-world applications, the ability to reference previous parts of the 
     print("Summary: " + generated_text + "\n")
     ```
 
-1. Save the file. In the code you added, notice we now append the previous input and response to the prompt array which allows the model to understand the history of our conversation.
-1. In the terminal pane, enter the following command to run the application.
+1. Salve o arquivo. No código que você adicionou, observe que agora acrescentamos a entrada e a resposta anteriores à matriz de prompts que permite que o modelo entenda o histórico de nossa conversa.
+1. No painel do terminal, insira o comando a seguir para executar o aplicativo.
 
-    - **C#**: `dotnet run`
+    - **C#** : `dotnet run`
     - **Python**: `python test-openai-model.py`
 
-1. Run the app again and provide the prompt `Where is a good hike near Boise?`.
-1. Observe the output, and then prompt `How difficult is the second hike you suggested?`.
-1. You'll likely get a response about the second hike the model suggested, which provides a much more realistic conversation. You can ask additional follow up questions referencing previous answers, and each time the history provides context for the model to answer.
+1. Execute o aplicativo novamente e forneça o prompt `Where is a good hike near Boise?`.
+1. Observe a saída e, em seguida, solicite `How difficult is the second hike you suggested?`.
+1. Você provavelmente receberá uma resposta sobre a segunda caminhada sugerida pelo modelo, o que fornece uma conversa muito mais realista. Você pode fazer perguntas adicionais de acompanhamento que fazem referência às respostas anteriores e sempre que o histórico fornece contexto para o modelo responder.
 
-    > **Tip**: The token count is only set to 1200, so if the conversation continues too long the application will run out of available tokens, resulting in an incomplete prompt. In production uses, limiting the length of the history to the most recent inputs and responses will help control the number of required tokens.
+    > **Dica**: a contagem de tokens é definida apenas como 1200, portanto, se a conversa continuar por muito tempo, o aplicativo ficará sem tokens disponíveis, resultando em um prompt incompleto. Em usos de produção, limitar o comprimento do histórico às entradas e respostas mais recentes ajudará a controlar o número de tokens necessários.
 
-## Clean up
+## Limpar
 
-When you're done with your Azure OpenAI resource, remember to delete the deployment or the entire resource in the **Azure portal** at `https://portal.azure.com`.
+Quando terminar o recurso do OpenAI do Azure, lembre-se de excluir a implantação ou todo o recurso no **portal do Azure** em `https://portal.azure.com`.
