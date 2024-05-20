@@ -1,111 +1,111 @@
 ---
 lab:
-    title: 'Get started with Azure OpenAI service'
+  title: Comece com o serviço Azure OpenAI
 ---
 
-# Get started with Azure OpenAI service
+# Comece com o serviço Azure OpenAI
 
-Azure OpenAI Service brings the generative AI models developed by OpenAI to the Azure platform, enabling you to develop powerful AI solutions that benefit from the security, scalability, and integration of services provided by the Azure cloud platform. In this exercise, you'll learn how to get started with Azure OpenAI by provisioning the service as an Azure resource and using Azure OpenAI Studio to deploy and explore generative AI models.
+O Serviço OpenAI do Azure traz os modelos de IA generativa desenvolvidos pelo OpenAI para a plataforma do Azure, permitindo que você desenvolva soluções avançadas de IA que se beneficiem da segurança, escalabilidade e integração de serviços fornecidos pela plataforma de nuvem do Azure. Nesse exercício, você aprenderá como começar a usar o Azure OpenAI provisionando o serviço como um recurso do Azure e usando o Azure OpenAI Studio para implantar e explorar modelos de IA generativos.
 
-In the scenario for this exercise, you will perform the role of a software developer who has been tasked to implement an AI agent that can use generative AI to help a marketing organization improve its effectiveness at reaching customers and advertising new products. The techniques used in the exercise can be applied to any scenario where an organization wants to use generative AI models to help employees be more effective and productive.
+No cenário deste exercício, você desempenhará o papel de um desenvolvedor de software encarregado de implementar um agente de IA que possa usar IA generativa para ajudar uma organização de marketing a melhorar sua eficácia em alcançar clientes e anunciar novos produtos. As técnicas utilizadas no exercício podem ser aplicadas a qualquer cenário em que uma organização pretenda utilizar modelos generativos de IA para ajudar os funcionários a serem mais eficazes e produtivos.
 
-This exercise takes approximately **30** minutes.
+Este exercício levará aproximadamente **30** minutos.
 
-## Provision an Azure OpenAI resource
+## Provisionar um recurso de OpenAI do Azure
 
-If you don't already have one, provision an Azure OpenAI resource in your Azure subscription.
+Se ainda não tiver um, provisione um recurso Azure OpenAI na sua assinatura do Azure.
 
-1. Sign into the **Azure portal** at `https://portal.azure.com`.
-2. Create an **Azure OpenAI** resource with the following settings:
-    - **Subscription**: *Select an Azure subscription that has been approved for access to the Azure OpenAI service*
-    - **Resource group**: *Choose or create a resource group*
-    - **Region**: *Make a **random** choice from any of the following regions*\*
-        - Australia East
-        - Canada East
-        - East US
-        - East US 2
-        - France Central
-        - Japan East
-        - North Central US
-        - Sweden Central
-        - Switzerland North
-        - UK South
-    - **Name**: *A unique name of your choice*
-    - **Pricing tier**: Standard S0
+1. Entre no **portal do Azure** em `https://portal.azure.com`.
+2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
+    - **Assinatura**: *Selecione uma assinatura do Azure que tenha sido aprovada para acesso ao serviço Azure OpenAI*
+    - **Grupo de recursos**: *escolher ou criar um grupo de recursos*
+    - **Região**: *faça uma escolha **aleatória** de uma das regiões a seguir*\*
+        - Leste da Austrália
+        - Leste do Canadá
+        - Leste dos EUA
+        - Leste dos EUA 2
+        - França Central
+        - Leste do Japão
+        - Centro-Norte dos EUA
+        - Suécia Central
+        - Norte da Suíça
+        - Sul do Reino Unido
+    - **Nome**: *um nome exclusivo de sua preferência*
+    - **Tipo de preço**: Standard S0
 
-    > \* Azure OpenAI resources are constrained by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a subscription with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Os recursos do OpenAI do Azure são restritos por cotas regionais. As regiões listadas incluem a cota padrão para os tipos de modelos usados neste exercício. A escolha aleatória de uma região reduz o risco de uma só região atingir o limite de cota em cenários nos quais você compartilha uma assinatura com outros usuários. No caso de um limite de cota ser atingido mais adiante no exercício, há a possibilidade de você precisar criar outro recurso em uma região diferente.
 
-3. Wait for deployment to complete. Then go to the deployed Azure OpenAI resource in the Azure portal.
+3. Aguarde o fim da implantação. Em seguida, vá para o recurso OpenAI do Azure implantado no portal do Azure.
 
-## Deploy a model
+## Implantar um modelo
 
-Azure OpenAI service provides a web-based portal named **Azure OpenAI Studio**, that you can use to deploy, manage, and explore models. You'll start your exploration of Azure OpenAI by using Azure OpenAI Studio to deploy a model.
+O serviço Azure OpenAI fornece um portal baseado na Web denominado **Azure OpenAI Studio**, que pode utilizar para implementar, gerir e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Azure OpenAI Studio para implantar um modelo.
 
-> **Note**: As you use Azure OpenAI Studio, message boxes suggesting tasks for you to perform may be displayed. You can close these and follow the steps in this exercise.
+> **Observação**: À medida que você usa o Azure OpenAI Studio, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
-1. In the Azure portal, on the **Overview** page for your Azure OpenAI resource, use the **Go to Azure OpenAI Studio** button to open Azure OpenAI Studio in a new browser tab.
+1. No portal do Azure, na página **Visão geral** do recurso Azure OpenAI, use o botão **Ir para o Azure OpenAI Studio** para abrir o Azure OpenAI Studio em uma nova guia do navegador.
 
-    After the new tab opens, you can close any banner notifications for new preview services that are displayed at the top of the Azure OpenAI Studio page.
+    Depois que a nova guia for aberta, você poderá fechar quaisquer notificações de banner para novos serviços de visualização exibidos na parte superior da página do Azure OpenAI Studio.
 
-1. In Azure OpenAI Studio, in the pane on the left, select the **Deployments** page and view your existing model deployments. If you don't already have one, create a new deployment of the **gpt-35-turbo-16k** model with the following settings:
-    - **Model**: gpt-35-turbo-16k *(if the 16k model isn't available, choose gpt-35-turbo)*
-    - **Model version**: Auto-update to default
-    - **Deployment name**: *A unique name of your choice*
-    - **Advanced options**
-        - **Content filter**: Default
-        - **Deployment type**: Standard
-        - **Tokens per minute rate limit**: 5K\*
-        - **Enable dynamic quota**: Enabled
+1. No Azure OpenAI Studio, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+    - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
+    - **Versão do Modelo**: atualização automática para padrão
+    - **Nome de implantação**: *um nome exclusivo de sua preferência*
+    - **Opções avançadas**
+        - **Filtro de conteúdo**: Padrão
+        - **Tipo de implantação**: Padrão
+        - **Limite de taxa de tokens por minuto**: 5K\*
+        - **Habilitar cota dinâmica**: Habilitado
 
-    > \* A rate limit of 5,000 tokens per minute is more than adequate to complete this exercise while leaving capacity for other people using the same subscription.
+    > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
-## Use the Chat playground
+## Usar o playground Chat
 
-Now that you've deployed a model, you can use it to generate responses based on natural language prompts. The *Chat* playground in Azure OpenAI Studio provides a chatbot interface for GPT 3.5 and higher models.
+Agora que implantou um modelo, você pode usá-lo para gerar respostas com base em prompts de linguagem natural. O playground do *Chat* no Azure OpenAI Studio fornece uma interface de chatbot para modelos GPT 3.5 e superiores.
 
-> **Note:** The *Chat* playground uses the *ChatCompletions* API rather than the older *Completions* API that is used by the *Completions* playground. The Completions playground is provided for compatibility with older models.
+> **Observação:** O playground *Chat* usa a API *ChatCompletions* em vez da API *Completions* mais antiga que é usada pelo playground *Completions*. O playground Completions é fornecido para compatibilidade com modelos mais antigos.
 
-1. In the **Playground** section, select the **Chat** page. The **Chat** playground page consists of three main panels (which may be arranged right-to-left horizontally, or top-to-bottom vertically depending on your screen resolution):
-    - **Setup** - used to set the context for the model's responses.
-    - **Chat session** - used to submit chat messages and view responses.
-    - **Configuration** - used to configure settings for the model deployment.
-1. In the **Configuration** panel, ensure that your gpt-35-turbo-16k model deployment is selected.
-1. In the **Setup** panel, review the default **System message**, which should be *You are an AI assistant that helps people find information.* The system message is included in prompts submitted to the model, and provides context for the model's responses; setting expectations about how an AI agent based on the model should interact with the user.
-1. In the **Chat session** panel, enter the user query `How can I use generative AI to help me market a new product?`
+1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em três painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
+    - **Configuração** - usado para definir o contexto para as respostas do modelo.
+    - **Sessão de Chat** - usada para enviar mensagens de chat e visualizar respostas.
+    - **Configuração** - usado para definir configurações para a implantação do modelo.
+1. No painel **Configuração**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
+1. No painel **Configuração**, revise a **Mensagem do sistema** padrão, que deveria ser *Você é um assistente de IA que ajuda as pessoas a encontrar informações.* A mensagem do sistema é incluída nos prompts enviados ao modelo e fornece contexto para as respostas do modelo; definir expectativas sobre como um agente de IA baseado no modelo deve interagir com o usuário.
+1. No painel **Sessão de chat**, insira a consulta do usuário `How can I use generative AI to help me market a new product?`
 
-    > **Note**: You may receive a response that the API deployment is not yet ready. If so, wait for a few minutes and try again.
+    > **Observação**: você pode receber uma resposta de que a implantação da API ainda não está pronta. Nesse caso, aguarde alguns minutos e tente novamente.
 
-1. Review the response, noting that the model has generated a cohesive natural language answer that is relevant to the query with which it was prompted.
-1. Enter the user query `What skills do I need if I want to develop a solution to accomplish this?`.
-1. Review the response, noting that the chat session has retained the conversational context (so "this" is interpreted as a generative AI solution for marketing). This contextualization is achieved by including the recent conversation history in each successive prompt submission, so the prompt sent to the model for the second query included the original query and response as well as the new user input.
-1. In the **Chat session** panel toolbar, select **Clear chat** and confirm that you want to restart the chat session.
-1. Enter the query `Can you help me find resources to learn those skills?` and review the response, which should be a valid natural language answer, but since the previous chat history has been lost, the answer is likely to be about finding generic skilling resources rather than being related to the specific skills needed to build a generative AI marketing solution.
+1. Revise a resposta, observando que o modelo gerou uma resposta coesa em linguagem natural que é relevante para a consulta que foi solicitada.
+1. Insira a consulta do usuário `What skills do I need if I want to develop a solution to accomplish this?`.
+1. Revise a resposta, observando que a sessão de chat manteve o contexto conversacional (portanto, “isto” é interpretado como uma solução de IA generativa para marketing). Essa contextualização é obtida incluindo o histórico de conversas recentes em cada envio de prompt sucessivo, de modo que o prompt enviado ao modelo para a segunda consulta inclua a consulta e a resposta originais, bem como a nova entrada do usuário.
+1. Na barra de ferramentas do painel **Sessão de chat**, selecione **Limpar chat** e confirme que deseja reiniciar a sessão de chat.
+1. Insira a consulta `Can you help me find resources to learn those skills?` e revise a resposta, que deve ser uma resposta válida em linguagem natural, mas como o histórico de chat anterior foi perdido, a resposta provavelmente será sobre como encontrar recursos genéricos de qualificação, em vez de estar relacionada às habilidades específicas necessárias para construir uma solução generativa de marketing de IA.
 
-## Experiment with system messages, prompts, and few-shot examples
+## Experimente mensagens do sistema, prompts e exemplos rápidos
 
-So far, you've engaged in a chat conversation with your model based on the default system message. You can customize the system setup to have more control over the kinds of responses generated by your model.
+Até agora, você conversou por chat com seu modelo com base na mensagem padrão do sistema. Você pode personalizar a configuração do sistema para ter mais controle sobre os tipos de respostas geradas pelo seu modelo.
 
-1. In the **Setup** panel, under **Use a system message template**, select the **Marketing Writing Assistant** template and confirm that you want to update the system message.
-1. Review the new system message, which describes how an AI agent should use the model to respond.
-1. In the **Chat session** panel, enter the user query `Create an advertisement for a new scrubbing brush`.
-1. Review the response, which should include advertising copy for a scrubbing brush. The copy may be quite extensive and creative.
+1. No painel **Configuração**, em **Usar um modelo de mensagem do sistema**, selecione o modelo **Marketing Writing Assistant** e confirme que deseja atualizar a mensagem do sistema.
+1. Revise a nova mensagem do sistema, que descreve como um agente de IA deve usar o modelo para responder.
+1. No painel **Sessão de chat**, insira a consulta do usuário `Create an advertisement for a new scrubbing brush`.
+1. Revise a resposta, que deve incluir um texto publicitário para uma escova de esfregar. A cópia pode ser bastante extensa e criativa.
 
-    In a real scenario, a marketing professional would likely already know the name of the scrubbing brush product as well as have some ideas about key features that should be highlighted in an advert. To get the most useful results from a generative AI model, users need to design their prompts to include as much pertinent information as possible.
+    Em um cenário real, um profissional de marketing provavelmente já saberia o nome do produto de escova e também teria algumas ideias sobre os principais recursos que deveriam ser destacados em um anúncio. Para obter os resultados mais úteis de um modelo generativo de IA, os usuários precisam projetar seus prompts para incluir o máximo possível de informações pertinentes.
 
-1. Enter the prompt `Revise the advertisement for a scrubbing brush named "Scrubadub 2000", which is made of carbon fiber and reduces cleaning times by half compared to ordinary scrubbing brushes`.
-1. Review the response, which should take into account the additional information you provided about the scrubbing brush product.
+1. Digite o prompt `Revise the advertisement for a scrubbing brush named "Scrubadub 2000", which is made of carbon fiber and reduces cleaning times by half compared to ordinary scrubbing brushes`.
+1. Revise a resposta, que deve levar em consideração as informações adicionais fornecidas sobre o produto da escova de esfregar.
 
-    The response should now be more useful, but to have even more control over the output from the model, you can provide one or more *few-shot* examples on which responses should be based.
+    A resposta agora deve ser mais útil, mas para ter ainda mais controle sobre a saída do modelo, você pode fornecer um ou mais exemplos de *poucos disparos* nos quais as respostas devem ser baseadas.
 
-1. In the **Setup** panel, under **Examples**, select **Add**. Then type the following message and response in the designated boxes:
+1. No painel **Configuração**, em **Exemplos**, selecione **Adicionar**. Em seguida, digite a seguinte mensagem e resposta nas caixas designadas:
 
-    **User**:
+    **Usuário**:
     
     ```
     Write an advertisement for the lightweight "Ultramop" mop, which uses patented absorbent materials to clean floors.
     ```
     
-    **Assistant**:
+    **Assistente:**
     
     ```
     Welcome to the future of cleaning!
@@ -118,53 +118,53 @@ So far, you've engaged in a chat conversation with your model based on the defau
     Check out this and other products on our website at www.contoso.com.
     ```
 
-1. Use the **Apply changes** button to save the examples and start a new session.
-1. In the **Chat session** section, enter the user query `Create an advertisement for the Scrubadub 2000 - a new scrubbing brush made of carbon fiber that reduces cleaning time by half`.
-1. Review the response, which should be a new advert for the "Scrubadub 2000" that is modeled on the "Ultramop" example provided in the system setup.
+1. Use o botão **Aplicar alterações** para salvar os exemplos e iniciar uma nova sessão.
+1. Na seção **Sessão de chat**, insira a consulta do usuário `Create an advertisement for the Scrubadub 2000 - a new scrubbing brush made of carbon fiber that reduces cleaning time by half`.
+1. Revise a resposta, que deve ser um novo anúncio do "Scrubadub 2000" modelado no exemplo "Ultramop" fornecido na configuração do sistema.
 
-## Experiment with parameters
+## Experimente com parâmetros
 
-You've explored how the system message, examples, and prompts can help refine the responses returned by the model. You can also use parameters to control model behavior.
+Você explorou como a mensagem, os exemplos e os prompts do sistema podem ajudar a refinar as respostas retornadas pelo modelo. Você também pode usar parâmetros para controlar o comportamento do modelo.
 
-1. In the **Configuration** panel, select the **Parameters** tab and set the following parameter values:
-    - **Max response**: 1000
-    - **Temperature**: 1
+1. No painel **Configuração**, selecione a guia **Parâmetros** e defina *os seguintes valores de parâmetro:
+    - **Resposta máxima**: 1.000
+    - **Temperatura**: 1
 
-1. In the **Chat session** section, use the **Clear chat** button to reset the chat session. Then enter the user query `Create an advertisement for a cleaning sponge` and review the response. The resulting advertisement copy should include a maximum of 1000 text tokens, and include some creative elements - for example, the model may have invented a product name for the sponge and made some claims about its features.
-1. Use the **Clear chat** button to reset the chat session again, and then re-enter the same query as before (`Create an advertisement for a cleaning sponge`) and review the response. The response may be different from the previous response.
-1. In the **Configuration** panel, on the **Parameters** tab, change the **Temperature** parameter value to 0.
-1. In the **Chat session** section, use the **Clear chat** button to reset the chat session again, and then re-enter the same query as before (`Create an advertisement for a cleaning sponge`) and review the response. This time, the response may not be quite so creative.
-1. Use the **Clear chat** button to reset the chat session one more time, and then re-enter the same query as before (`Create an advertisement for a cleaning sponge`) and review the response; which should be very similar (if not identical) to the previous response.
+1. Na seção **Sessão de chat**, use o botão **Limpar chat** para redefinir a sessão de chat. Em seguida, insira a consulta do usuário `Create an advertisement for a cleaning sponge` e revise a resposta. A cópia do anúncio resultante deve incluir no máximo 1000 tokens de texto e alguns elementos criativos - por exemplo, o modelo pode ter inventado um nome de produto para a esponja e feito algumas afirmações sobre suas características.
+1. Use o botão **Limpar chat** para redefinir a sessão de bate-papo novamente e, em seguida, insira novamente a mesma consulta de antes (`Create an advertisement for a cleaning sponge`) e revise a resposta. A resposta pode ser diferente da resposta anterior.
+1. No painel **Configuração**, na aba **Parâmetros**, altere o valor do parâmetro **Temperatura** para 0.
+1. Na seção **Sessão de chat**, use o botão **Limpar chat** para redefinir a sessão de chat novamente e, em seguida, insira novamente a mesma consulta de antes (`Create an advertisement for a cleaning sponge`) e revise a resposta. Dessa vez, a resposta pode não ser tão criativa.
+1. Use o botão **Limpar chat** para redefinir a sessão de bate-papo mais uma vez e, em seguida, insira novamente a mesma consulta de antes (`Create an advertisement for a cleaning sponge`) e revise a resposta; que deve ser muito semelhante (se não idêntico) à resposta anterior.
 
-    The **Temperature** parameter controls the degree to which the model can be creative in its generation of a response. A low value results in a consistent response with little random variation, while a high value encourages the model to add creative elements its output; which may affect the accuracy and realism of the response.
+    O parâmetro **Temperatura** controla o grau em que o modelo pode ser criativo na geração de uma resposta. Um valor baixo resulta em uma resposta consistente com pouca variação aleatória, enquanto um valor alto incentiva o modelo a adicionar elementos criativos à sua saída; o que pode afetar a precisão e o realismo da resposta.
 
-## Deploy your model to a web app
+## Implante seu modelo em um aplicativo web
 
-Now that you've explored some of the capabilities of a generative AI model in the Azure OpenAI Studio playground, you can deploy an Azure web app to provide a basic AI agent interface through which users can chat with the model.
+Agora que explorou algumas das capacidades de um modelo de IA generativo no playground do Azure OpenAI Studio, você pode implantar um aplicativo Web do Azure para fornecer uma interface básica de agente de IA por meio da qual os usuários podem conversar com o modelo.
 
-1. At the top right of the **Chat** playground page, in the **Deploy to** menu, select **A new web app**.
-1. In the **Deploy to a web app** dialog box, create a new web app with the following settings:
-    - **Name**: *A unique name*
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *The resource group in which you provisioned your Azure OpenAI resource*
-    - **Locations**: *The region where you provisioned your Azure OpenAI resource*
-    - **Pricing plan**: Free (F1) - *If this is not available, select Basic (B1)*
-    - **Enable chat history in the web app**: <u>Un</u>selected
-    - **I acknowledge that web apps will incur usage to my account**: Selected
-1. Deploy the new web app and wait for deployment to complete (which may take 10 minutes or so)
-1. After your web app has deployed successfully, use the button at the top right of the **Chat** playground page to launch the web app. The app may take a few minutes to launch. If prompted, accept the permissions request.
-1. In the web app, enter the following chat message:
+1. No canto superior direito da página do playground **Chat**, no menu **Implantar em**, selecione **Um novo aplicativo web**.
+1. Na caixa de diálogo **Implantar em um aplicativo web**, crie um novo aplicativo web com as seguintes configurações:
+    - **Nome**: *um nome exclusivo*
+    - **Assinatura**: *sua assinatura do Azure*
+    - **Grupo de recursos**: *O grupo de recursos no qual você provisionou seu recurso Azure OpenAI*
+    - **Localizações**: *A região onde você provisionou seu recurso Azure OpenAI*
+    - **Plano de preços**: Gratuito (F1) - *Se não estiver disponível, selecione Básico (B1)*
+    - **Habilite o histórico de chat no aplicativo da web**: <u>Não</u> selecionado
+    - **Reconheço que os aplicativos Web incorrerão no uso da minha conta**: Selecionado
+1. Implante o novo aplicativo da web e aguarde a conclusão da implantação (o que pode levar cerca de 10 minutos)
+1. Após a implantação bem-sucedida do seu aplicativo Web, use o botão no canto superior direito da página do **Chat** Playground para iniciar o aplicativo Web. O aplicativo pode levar alguns minutos para iniciar. Se solicitado, aceite a solicitação de permissões.
+1. No aplicativo da web, insira a seguinte mensagem de chat:
 
     ```
     Write an advertisement for the new "WonderWipe" cloth that attracts dust particulates and can be used to clean any household surface.
     ```
 
-1. Review the response.
+1. Revise a resposta.
 
-    > **Note**: You deployed the *model* to a web app, but this deployment doesn't include the system settings and parameters you set in the playground; so the response may not reflect the examples you specified in the playground. In a real scenario, you would add logic to your application to modify the prompt so that it includes the appropriate contextual data for the kinds of response you want to generate. This kind of customization is beyond the scope of this introductory-level exercise, but you can learn about prompt engineering techniques and Azure OpenAI APIs in other exercises and product documentation.
+    > **Observação**: Você implantou o *modelo* em um aplicativo Web, mas essa implantação não inclui as configurações e os parâmetros do sistema definidos no playground; portanto, a resposta pode não refletir os exemplos que você especificou no playground. Em um cenário real, você adicionaria lógica ao seu aplicativo para modificar o prompt para que ele incluísse os dados contextuais apropriados para os tipos de resposta que você deseja gerar. Esse tipo de personalização está além do escopo desse exercício de nível introdutório, mas você pode aprender sobre técnicas de engenharia imediata e APIs do Azure OpenAI em outros exercícios e na documentação do produto.
 
-1. When you have finished experimenting with your model in the web app, close the web app tab in your browser to return to Azure OpenAI Studio.
+1. Quando terminar de experimentar seu modelo no aplicativo Web, feche a guia do aplicativo Web no navegador para retornar ao Azure OpenAI Studio.
 
-## Clean up
+## Limpar
 
-When you're done with your Azure OpenAI resource, remember to delete the deployment or the entire resource in the **Azure portal** at `https://portal.azure.com`.
+Quando terminar o recurso do Azure OpenAI, lembre-se de excluir a implantação ou todo o recurso no arquivo **portal do Azure** em `https://portal.azure.com`.
