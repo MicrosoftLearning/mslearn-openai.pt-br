@@ -13,7 +13,7 @@ Este exercício levará aproximadamente **30** minutos.
 
 ## Provisionar um recurso de OpenAI do Azure
 
-Se ainda não tiver um, provisione um recurso Azure OpenAI na sua assinatura do Azure.
+Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura do Azure.
 
 1. Entre no **portal do Azure** em `https://portal.azure.com`.
 2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
@@ -59,14 +59,14 @@ O OpenAI do Azure fornece um portal baseado na Web chamado **Azure OpenAI Studio
 Vamos começar explorando algumas técnicas de engenharia imediata no playground do Chat.
 
 1. No **Azure OpenAI Studio** em `https://oai.azure.com`, na seção **Playground**, selecione a página **Chat**. A página do playground **Chat** consiste em três seções principais:
-    - **Configuração** - usado para definir o contexto para as respostas do modelo.
-    - **Sessão de chat** - usada para enviar mensagens de bate-papo e visualizar respostas.
-    - **Configuração** - usado para definir configurações para a implantação do modelo.
+    - **Configuração** - usada para definir o contexto para as respostas do modelo.
+    - **Sessão de chat** - usada para enviar mensagens de bate-papo e exibir respostas.
+    - **Configuração** - usada para definir configurações para a implantação do modelo.
 2. Na seção **Configuração**, certifique-se de que a implantação do seu modelo esteja selecionada.
 3. Na área **Configuração**, selecione o modelo de mensagem do sistema padrão para definir o contexto da sessão de chat. A mensagem padrão do sistema é *Você é um assistente de IA que ajuda as pessoas a encontrar informações*.
 4. Na **sessão de chat**, envie a seguinte consulta:
 
-    ```
+    ```prompt
     What kind of article is this?
     ---
     Severe drought likely in California
@@ -86,7 +86,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
     **Usuário**:
     
-    ```
+    ```prompt
     What kind of article is this?
     ---
     New York Baseballers Wins Big Against Chicago
@@ -100,7 +100,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
     
     **Assistente:**
     
-    ```
+    ```prompt
     Sports
       ```
 
@@ -108,7 +108,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
     **Usuário:**
     
-    ```
+    ```prompt
     Categorize this article:
     ---
     Joyous moments at the Oscars
@@ -123,7 +123,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
     
     **Assistente:**
     
-    ```
+    ```prompt
     Entertainment
     ```
 
@@ -131,7 +131,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
 9. Na seção **Sessão de chat**, reenvie o seguinte prompt:
 
-    ```
+    ```prompt
     What kind of article is this?
     ---
     Severe drought likely in California
@@ -149,7 +149,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
 11. Na seção **Sessão de chat**, envie o seguinte prompt:
 
-    ```
+    ```prompt
     # 1. Create a list of animals
     # 2. Create a list of whimsical names for those animals
     # 3. Combine them randomly into a list of 25 animal and name pairs
@@ -178,7 +178,7 @@ Agora vamos explorar o uso da engenharia imediata em um aplicativo que usa o SDK
 2. Abra a paleta (SHIFT+CTRL+P) e execute o comando **Git: Clone** para clonar o repositório `https://github.com/MicrosoftLearning/mslearn-openai` em uma pasta local (não importa qual pasta).
 3. Depois que o repositório for clonado, abra a pasta no Visual Studio Code.
 
-    > **Observação**: Se o Visual Studio Code mostrar uma mensagem pop-up solicitando que você confie no código que está abrindo, clique na opção **Sim, confio nos autores** no pop-up.
+    > **Observação**: Se o Visual Studio Code mostrar uma mensagem pop-up para solicitar que você confie no código que está abrindo, clique na opção **Sim, confio nos autores** no pop-up.
 
 4. Aguarde enquanto os arquivos adicionais são instalados para dar suporte aos projetos de código C# no repositório.
 
@@ -189,7 +189,7 @@ Agora vamos explorar o uso da engenharia imediata em um aplicativo que usa o SDK
 Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam a mesma funcionalidade. Primeiro, você concluirá algumas partes importantes do aplicativo para permitir o uso do recurso Azure OpenAI com chamadas de API assíncronas.
 
 1. No Visual Studio Code, no painel **Explorer**, navegue até a pasta **Labfiles/03-prompt-engineering** e expanda a pasta **CSharp** ou **Python** dependendo de sua preferência de idioma. Cada pasta contém os arquivos específicos de linguagem de um aplicativo no qual você integrará a funcionalidade do Azure OpenAI.
-2. Clique com o botão direito na pasta **CSharp** ou **Python** que contém seus arquivos de código e abra um terminal integrado. Em seguida, instale o pacote Azure OpenAI SDK executando o comando apropriado para a sua preferência de idioma:
+2. Clique com o botão direito na pasta **CSharp** ou **Python** que contém seus arquivos de código e abra um terminal integrado. Em seguida, instale o pacote do SDK do OpenAI do Azure executando o comando apropriado para sua preferência de idioma:
 
     **C#**:
 
@@ -421,4 +421,4 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
 
 ## Limpar
 
-Quando terminar o recurso do Azure OpenAI, lembre-se de excluir a implantação ou todo o recurso no arquivo **portal do Azure** em `https://portal.azure.com`.
+Quando terminar o recurso do OpenAI do Azure, lembre-se de excluir a implantação ou todo o recurso no **portal do Azure** em `https://portal.azure.com`.

@@ -66,11 +66,11 @@ Antes de conectar o OpenAI do Azure aos seus dados, primeiro observe como o mode
 3. Na área **Configuração**, selecione o modelo de mensagem do sistema padrão para definir o contexto da sessão de chat. A mensagem padrão do sistema é *Você é um assistente de IA que ajuda as pessoas a encontrar informações*.
 4. Na **sessão de Chat**, envie as seguintes consultas e examine as respostas:
 
-    ```
+    ```prompt
     I'd like to take a trip to New York. Where should I stay?
     ```
 
-    ```
+    ```prompt
     What are some facts about New York?
     ```
 
@@ -121,11 +121,11 @@ Agora você adicionará alguns dados para uma empresa fictícia de agente de via
 
 Agora que você adicionou seus dados, faça as mesmas perguntas que fez anteriormente e veja como a resposta difere.
 
-```
+```prompt
 I'd like to take a trip to New York. Where should I stay?
 ```
 
-```
+```prompt
 What are some facts about New York?
 ```
 
