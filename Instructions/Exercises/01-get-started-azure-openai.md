@@ -13,7 +13,7 @@ Este exercício levará aproximadamente **30** minutos.
 
 ## Provisionar um recurso de OpenAI do Azure
 
-Se ainda não tiver um, provisione um recurso Azure OpenAI na sua assinatura do Azure.
+Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura do Azure.
 
 1. Entre no **portal do Azure** em `https://portal.azure.com`.
 2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
@@ -67,7 +67,7 @@ Agora que implantou um modelo, você pode usá-lo para gerar respostas com base 
 
 1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em três painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
     - **Configuração** - usado para definir o contexto para as respostas do modelo.
-    - **Sessão de Chat** - usada para enviar mensagens de chat e visualizar respostas.
+    - **Sessão de chat** - usada para enviar mensagens de bate-papo e exibir respostas.
     - **Configuração** - usado para definir configurações para a implantação do modelo.
 1. No painel **Configuração**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
 1. No painel **Configuração**, revise a **Mensagem do sistema** padrão, que deveria ser *Você é um assistente de IA que ajuda as pessoas a encontrar informações.* A mensagem do sistema é incluída nos prompts enviados ao modelo e fornece contexto para as respostas do modelo; definir expectativas sobre como um agente de IA baseado no modelo deve interagir com o usuário.
@@ -101,13 +101,13 @@ Até agora, você conversou por chat com seu modelo com base na mensagem padrão
 
     **Usuário**:
     
-    ```
+    ```prompt
     Write an advertisement for the lightweight "Ultramop" mop, which uses patented absorbent materials to clean floors.
     ```
     
     **Assistente:**
     
-    ```
+    ```prompt
     Welcome to the future of cleaning!
     
     The Ultramop makes light work of even the dirtiest of floors. Thanks to its patented absorbent materials, it ensures a brilliant shine. Just look at these features:
@@ -155,7 +155,7 @@ Agora que explorou algumas das capacidades de um modelo de IA generativo no play
 1. Após a implantação bem-sucedida do seu aplicativo Web, use o botão no canto superior direito da página do **Chat** Playground para iniciar o aplicativo Web. O aplicativo pode levar alguns minutos para iniciar. Se solicitado, aceite a solicitação de permissões.
 1. No aplicativo da web, insira a seguinte mensagem de chat:
 
-    ```
+    ```prompt
     Write an advertisement for the new "WonderWipe" cloth that attracts dust particulates and can be used to clean any household surface.
     ```
 
@@ -167,4 +167,4 @@ Agora que explorou algumas das capacidades de um modelo de IA generativo no play
 
 ## Limpar
 
-Quando terminar o recurso do Azure OpenAI, lembre-se de excluir a implantação ou todo o recurso no arquivo **portal do Azure** em `https://portal.azure.com`.
+Quando terminar o recurso do OpenAI do Azure, lembre-se de excluir a implantação ou todo o recurso no **portal do Azure** em `https://portal.azure.com`.
