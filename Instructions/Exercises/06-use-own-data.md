@@ -113,6 +113,7 @@ Agora você adicionará alguns dados para uma empresa fictícia de agente de via
 
 1. Na página **Upload de arquivos**, carregue os PDFs que você baixou e selecione **Avançar**.
 1. Na página **Gerenciamento de dados**, selecione o tipo de pesquisa **Palavra-chave** no menu suspenso e, em seguida, **Avançar**.
+1. Na página **Conexão de Dados**, selecione **Chave de API**.
 1. Na página **Revisar e concluir** selecione **Salvar e fechar**, que adicionará seus dados. Isso pode levar alguns minutos, durante os quais você precisa deixar a janela aberta. Depois de concluído, você verá a fonte de dados, o recurso de pesquisa e o índice especificados na seção **Configuração**.
 
     > **Dica**: Ocasionalmente, a conexão entre o novo índice de pesquisa e o Estúdio de OpenAI do Azure leva muito tempo. Se você esperou alguns minutos e ainda não se conectou, verifique os recursos da Pesquisa de IA no portal do Azure. Se você vir o índice concluído, poderá desconectar a conexão de dados no Estúdio da OpenAI do Azure e adicioná-la novamente especificando uma fonte de dados da Pesquisa de IA do Azure e selecionando seu novo índice.
