@@ -48,14 +48,13 @@ O serviço Azure OpenAI fornece um portal baseado na Web denominado **Azure Open
     Depois que a nova guia for aberta, você poderá fechar quaisquer notificações de banner para novos serviços de visualização exibidos na parte superior da página do Azure OpenAI Studio.
 
 1. No Azure OpenAI Studio, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+    - **Nome de implantação**: *um nome exclusivo de sua preferência*
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
     - **Versão do Modelo**: atualização automática para padrão
-    - **Nome de implantação**: *um nome exclusivo de sua preferência*
-    - **Opções avançadas**
-        - **Filtro de conteúdo**: Padrão
-        - **Tipo de implantação**: Padrão
-        - **Limite de taxa de tokens por minuto**: 5K\*
-        - **Habilitar cota dinâmica**: Habilitado
+    - **Tipo de implantação**: Padrão
+    - **Limite de taxa de tokens por minuto**: 5K\*
+    - **Filtro de conteúdo**: Padrão
+    - **Habilitar cota dinâmica**: Habilitado
 
     > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
