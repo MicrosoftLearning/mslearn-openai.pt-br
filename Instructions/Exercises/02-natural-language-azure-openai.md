@@ -39,17 +39,19 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
 ## Implantar um modelo
 
-O OpenAI do Azure fornece um portal baseado na Web chamado **Azure OpenAI Studio**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Azure OpenAI Studio para implantar um modelo.
+O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará a exploração do OpenAI do do Azure usando o Estúdio de IA do Azure para implantar um modelo.
 
-1. Na página **Visão geral** do recurso OpenAI do Azure, use o botão **Vá para o OpenAI do Azure**  para abrir o Est do OpenAI do Azure em uma nova guia do navegador.
-2. No Azure OpenAI Studio, na página **Implantações**, exiba suas implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+> **Observação**: à medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
+
+1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **Estúdio de IA**.
+1. No Estúdio de IA do Azure, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
-    - **Versão do Modelo**: atualização automática para padrão
+    - **Versão do modelo**: *usar a versão padrão*
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
     - **Filtro de conteúdo**: Padrão
-    - **Habilitar cota dinâmica**: Habilitado
+    - **Habilitar cota dinâmica:**: desativado
 
     > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
@@ -95,7 +97,7 @@ Os aplicativos para C# e Python foram fornecidos. Ambos os aplicativos apresenta
     
 4. Atualize os valores da configuração para incluir:
     - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
-    - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Azure OpenAI Studio).
+    - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Estúdio de IA do Azure).
 5. Salve o arquivo de configuração.
 
 ## Adicione código para usar o serviço Azure OpenAI

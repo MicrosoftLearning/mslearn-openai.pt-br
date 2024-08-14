@@ -7,13 +7,17 @@ lab:
 
 O Serviço OpenAI do Azure permite que você use dados próprios com a inteligência do LLM subjacente. Você pode limitar o modelo para usar apenas seus dados para tópicos pertinentes ou misturá-los com os resultados do modelo pré-treinado.
 
-No cenário deste exercício, você executará a função de um desenvolvedor de software que trabalha para a Margie's Travel Agency. Você explorará como usar a IA gerativa para tornar as tarefas de codificação mais fáceis e eficientes. As técnicas usadas no exercício podem ser aplicadas a outros arquivos de código, linguagens de programação e casos de uso.
+No cenário deste exercício, você executará a função de um desenvolvedor de software que trabalha para a Margie's Travel Agency. Você explorará como usar a Pesquisa de IA do Azure para indexar seus próprios dados e usá-los com o OpenAI do Azure para aumentar os prompts.
 
-Este exercício levará aproximadamente **20** minutos.
+Este exercício levará aproximadamente **30** minutos.
 
-## Provisionar um recurso de OpenAI do Azure
+## Provisionar recursos do Azure
 
-Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura do Azure.
+Para concluir este exercício, você precisa de:
+
+- Um recurso do Azure OpenAI.
+- Um recurso da Pesquisa de IA do Azure.
+- Um recurso da conta de armazenamento do Azure.
 
 1. Entre no **portal do Azure** em `https://portal.azure.com`.
 2. Crie um recurso do **OpenAI do Azure** com as seguintes configurações:
@@ -35,17 +39,54 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
     > \* Os recursos do OpenAI do Azure são restritos por cotas regionais. As regiões listadas incluem a cota padrão para os tipos de modelos usados neste exercício. A escolha aleatória de uma região reduz o risco de uma só região atingir o limite de cota em cenários nos quais você compartilha uma assinatura com outros usuários. No caso de um limite de cota ser atingido mais adiante no exercício, há a possibilidade de você precisar criar outro recurso em uma região diferente.
 
-3. Aguarde o fim da implantação. Em seguida, vá para o recurso OpenAI do Azure implantado no portal do Azure.
+3. Enquanto o recurso OpenAI do Azure está sendo provisionado, crie um recurso da **Pesquisa de IA do Azure** com as seguintes configurações:
+    - **Assinatura**: *a assinatura na qual você provisionou o recurso do OpenAI do Azure*
+    - **Grupo de recursos**: *O grupo de recursos no qual você provisionou seu recurso Azure OpenAI*
+    - **Nome do serviço**: *um nome exclusivo de sua preferência*
+    - **Localização**: *a região onde você provisionou seu recurso do OpenAI do Azure*
+    - **Tipo de preço**: Básico
+4. Enquanto o recurso da Pesquisa de IA do Azure estiver sendo provisionado, crie um recurso de **conta de armazenamento** com as seguintes configurações:
+    - **Assinatura**: *a assinatura na qual você provisionou o recurso do OpenAI do Azure*
+    - **Grupo de recursos**: *O grupo de recursos no qual você provisionou seu recurso Azure OpenAI*
+    - **Nome da conta de armazenamento**: *um nome exclusivo de sua escolha*
+    - **Região**: *a região onde você provisionou seu recurso do OpenAI do Azure*
+    - **Desempenho**: padrão
+    - **Redundância**: LRS (armazenamento com redundância local)
+5. Depois que os três recursos tiverem sido implantados em sua assinatura do Azure, revise-os no portal do Azure e reúna as seguintes informações (que você precisará mais adiante no exercício):
+    - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
+    - O ponto de extremidade do serviço Pesquisa de IA do Azure (o valor de **Url** na página de visão geral do seu recurso de pesquisa no portal do Azure).
+    - Uma **chave de administrador primária** para o recurso Pesquisa de IA do Azure (disponível na página **Chaves** do recurso Pesquisa de IA do Azure no portal do Azure).
 
-## Implantar um modelo
+## Upload de dados
 
-O OpenAI do Azure fornece um portal baseado na Web chamado **Azure OpenAI Studio**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Azure OpenAI Studio para implantar um modelo.
+Você vai fundamentar os prompts que usa com um modelo de IA generativa usando seus próprios dados. Neste exercício, os dados consistem em uma coleção de folhetos de viagem da empresa fictícia *Margies Travel*.
 
-1. Na página **Visão geral** do recurso OpenAI do Azure, use o botão **Vá para o OpenAI do Azure**  para abrir o Est do OpenAI do Azure em uma nova guia do navegador.
-2. No Azure OpenAI Studio, na página **Implantações**, exiba suas implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
-    - **Nome de implantação**: *um nome exclusivo de sua preferência*
+1. Em uma nova guia do navegador, baixe um arquivo de dados de folheto de `https://aka.ms/own-data-brochures`. Extraia os folhetos para uma pasta no computador.
+1. No portal do Azure no navegador, acesse a sua conta de armazenamento e visualize a página **Navegador de armazenamento**.
+1. Escolha **Contêineres de blob** e adicione um novo contêiner chamado `margies-travel`.
+1. Escolha o contêiner **margies-travel** e carregue os folhetos .pdf extraídos anteriormente para a pasta raiz do contêiner de blob.
+
+## Implantar modelos de IA
+
+Você usará dois modelos de IA neste exercício:
+
+- Um modelo de inserção de texto para *vetorizar* o texto nos folhetos para que ele possa ser indexado de forma eficiente para uso em prompts de fundamentação.
+- Um modelo GPT que seu aplicativo pode usar para gerar respostas a prompts que são fundamentados em seus dados.
+
+Para implantar esses modelos, você usará o Estúdio de IA.
+
+1. No portal do Azure, navegue até o recurso OpenAI do Azure. Em seguida, use o link para abrir seu recurso no **Estúdio de IA do Azure**.
+1. No Estúdio de IA do Azure, na página **Implantações**, exiba as implantações de modelo existentes. Depois, crie uma nova implantação do modelo base **text-embedding-ada-002** com as seguintes configurações:
+    - **Nome da implantação**: text-embedding-ada-002
+    - **Versão do modelo**: *a versão padrão*
+    - **Tipo de implantação**: Padrão
+    - **Limite de taxa de tokens por minuto**: 5K\*
+    - **Filtro de conteúdo**: Padrão
+    - **Habilitar cota dinâmica**: Habilitado
+1. Depois que o modelo de inserção de texto tiver sido implantado, volte para a página **Implantações** e crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+    - **Nome da implantação**: gpt-35-turbo-16k
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
-    - **Versão do Modelo**: atualização automática para padrão
+    - **Versão do modelo**: *a versão padrão*
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
     - **Filtro de conteúdo**: Padrão
@@ -53,93 +94,31 @@ O OpenAI do Azure fornece um portal baseado na Web chamado **Azure OpenAI Studio
 
     > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
-## Observe o comportamento normal do chat sem adicionar seus dados
+## Crie um índice
 
-Antes de conectar o OpenAI do Azure aos seus dados, primeiro observe como o modelo base responde a consultas sem nenhum dado para fundamentação.
+Para facilitar o uso de seus próprios dados em um prompt, você os indexará usando a Pesquisa de IA do Azure. Você usará o mdoel de inserção de texto implantado anteriormente durante o processo de indexação para *vetorizar* os dados de texto (o que resulta em cada token de texto no índice sendo representado por vetores numéricos, tornando-o compatível com a maneira como um modelo de IA generativa representa o texto)
 
-1. No **Estúdio do OpenAI  do Azure** em `https://oai.azure.com`, na seção **Playground**, selecione a página **Chat**. A página do playground **Chat** consiste em três seções principais:
-    - **Configuração** - usada para definir o contexto para as respostas do modelo.
-    - **Sessão de chat** - usada para enviar mensagens de bate-papo e exibir respostas.
-    - **Configuração** - usada para definir configurações para a implantação do modelo.
-2. Na seção **Configuração**, certifique-se de que a implantação do seu modelo esteja selecionada.
-3. Na área **Configuração**, selecione o modelo de mensagem do sistema padrão para definir o contexto da sessão de chat. A mensagem padrão do sistema é *Você é um assistente de IA que ajuda as pessoas a encontrar informações*.
-4. Na **sessão de Chat**, envie as seguintes consultas e examine as respostas:
+1. No portal do Azure, navegue até o recurso Pesquisa de IA do Azure.
+1. Na página **Visão geral**, selecione **Importar e vetorizar dados**.
+1. Na página **Configurar conexão de dados**, escolha **Armazenamento de Blobs do Azure** e configure a fonte de dados com o seguinte:
+    - **Assinatura**: a assinatura do Azure na qual você provisionou sua conta de armazenamento.
+    - **Conta de armazenamento de Blobs**: a conta de armazenamento que você criou anteriormente.
+    - **Contêiner de blob**: margies-travel
+    - **Pasta de blob**: *deixe em branco*
+    - **Ativar rastreamento de exclusão**: desmarcado
+    - **Autenticar usando a identidade gerenciada**: desmarcado
+1. Na página **Vetorizar texto**, selecione as seguintes configurações:
+    - **Tipo**: OpenAI do Azure
+    - **Assinatura**: a assinatura do Azure na qual você provisionou o serviço OpenAI do Azure.
+    - **Serviço OpenAI do Azure**: o recurso do Serviço OpenAI do Azure
+    - **Implantação de modelo**: text-embedding-ada-002
+    - **Tipo de autenticação**: chave de API
+    - **Reconheço que a conexão com um serviço OpenAI do Azure incorrerá em custos adicionais para minha conta**: selecionado
+1. Na próxima página, <u>não</u> selecione as opções para vetorizar imagens ou extrair dados com habilidades de IA.
+1. Na próxima página, habilite a classificação semântica e agende o indexador para ser executado uma vez.
+1. Na página final, defina o **prefixo do nome Objetos** como `margies-index` e crie o índice.
 
-    ```prompt
-    I'd like to take a trip to New York. Where should I stay?
-    ```
-
-    ```prompt
-    What are some facts about New York?
-    ```
-
-    Tente fazer perguntas semelhantes sobre turismo e lugares para ficar para outros locais que serão incluídos em nossos dados de fundamentação, como Londres ou São Francisco. Você provavelmente receberá respostas completas sobre áreas ou bairros, e alguns fatos gerais sobre a cidade.
-
-## Conectar seus dados no playground de chat
-
-Agora você adicionará alguns dados para uma empresa fictícia de agente de viagens chamada *Margie's Travel*. Em seguida, você verá como o modelo do Azure OpenAI responde ao usar os folhetos do Margie's Travel como dados de aterramento.
-
-1. Em uma nova guia do navegador, baixe um arquivo de dados de folheto de `https://aka.ms/own-data-brochures`. Extraia os folhetos para uma pasta no computador.
-1. No Estúdio de OpenAI do Azure, no playground de **Chat**,  na seção **Configuração**, selecione **Adicionar seus dados**.
-1. Selecione **Adicionar uma fonte de dados** e escolha **Carregar arquivos**.
-1. Você precisará criar uma conta de armazenamento e um recurso de pesquisa da IA do Azure. Na lista suspensa do recurso de armazenamento, selecione **Criar um recurso de Armazenamento de Blobs do Azure** e crie uma conta de armazenamento com as configurações a seguir. Deixe qualquer coisa não especificada com o valor padrão.
-
-    - **Assinatura**: *sua assinatura do Azure*
-    - **Grupo de recursos**: *Selecione o mesmo grupo de recursos que o do recurso do  OpenAI do Azure*
-    - **Nome da conta de armazenamento**: *insira um nome exclusivo*.
-    - **Região**: *Selecione a mesma região que o recurso do  OpenAI do Azure*
-    - **Redundância**: LRS (armazenamento com redundância local)
-
-1. Enquanto o recurso da conta de armazenamento estiver sendo criado, retorne ao Azure OpenAI Studio e selecione **Criar um recurso da Pesquisa de IA do Azure** com as seguintes configurações. Deixe qualquer coisa não especificada com o valor padrão.
-
-    - **Assinatura**: *sua assinatura do Azure*
-    - **Grupo de recursos**: *Selecione o mesmo grupo de recursos que o do recurso do  OpenAI do Azure*
-    - **Nome do serviço**: *insira um nome exclusivo*
-    - **Localização**: *Selecione o mesmo local que o do recurso do OpenAI do Azure*
-    - **Tipo de preço**: Básico
-
-1. Aguarde até que o recurso de pesquisa tenha sido implantado e, em seguida, volte para o Estúdio de IA do Azure e atualize a página.
-1. Em **Adicionar dados**, insira os seguintes valores para a fonte de dados e selecione **Avançar**.
-
-    - **Selecionar fonte de dados**: carregar arquivos
-    - **Assinatura:** sua assinatura do Azure
-    - **Selecione o recurso Armazenamento de Blobs do Azure Blob**. *Use o botão **Atualizar** para preencher novamente a lista e escolha o recurso de armazenamento que você criou*
-        - Ativar o CORS quando solicitado
-    - **Selecione recurso da Pesquisa de IA do Azure** *Use o botão **Atualizar** para preencher novamente a lista e escolha o recurso de pesquisa que você criou*
-    - **Insira o nomedo índice**: `margiestravel`
-    - **Adicionar busca em vetores a este recurso de pesquisa**: desmarcado
-    - **Reconheço que a conexão a uma conta de Pesquisa de IA do Azure incorrerá no uso da minha conta**: verificado
-
-1. Na página **Upload de arquivos**, carregue os PDFs que você baixou e selecione **Avançar**.
-1. Na página **Gerenciamento de dados**, selecione o tipo de pesquisa **Palavra-chave** no menu suspenso e, em seguida, **Avançar**.
-1. Na página **Conexão de Dados**, selecione **Chave de API**.
-1. Na página **Revisar e concluir** selecione **Salvar e fechar**, que adicionará seus dados. Isso pode levar alguns minutos, durante os quais você precisa deixar a janela aberta. Depois de concluído, você verá a fonte de dados, o recurso de pesquisa e o índice especificados na seção **Configuração**.
-
-    > **Dica**: Ocasionalmente, a conexão entre o novo índice de pesquisa e o Estúdio de OpenAI do Azure leva muito tempo. Se você esperou alguns minutos e ainda não se conectou, verifique os recursos da Pesquisa de IA no portal do Azure. Se você vir o índice concluído, poderá desconectar a conexão de dados no Estúdio da OpenAI do Azure e adicioná-la novamente especificando uma fonte de dados da Pesquisa de IA do Azure e selecionando seu novo índice.
-
-## Conversar com um modelo fundamentado em seus dados
-
-Agora que você adicionou seus dados, faça as mesmas perguntas que fez anteriormente e veja como a resposta difere.
-
-```prompt
-I'd like to take a trip to New York. Where should I stay?
-```
-
-```prompt
-What are some facts about New York?
-```
-
-Você observará uma resposta muito diferente desta vez, com detalhes sobre determinados hotéis e uma menção da Margie's Travel, bem como referências à origem das informações fornecidas. Se você abrir a referência de PDF listada na resposta, verá os mesmos hotéis que o modelo fornecido.
-
-Tente perguntar sobre outras cidades incluídas nos dados de fundamentação, que são Dubai, Las Vegas, Londres e São Francisco.
-
-> **Observação**: **Adicionar seus dados** ainda está em versão prévia e pode nem sempre se comportar conforme o esperado para esse recurso, por exemplo, pode fornecer a referência incorreta para uma cidade não incluída nos dados de fundamentação.
-
-## Conectar seu aplicativo aos seus próprios dados
-
-Em seguida, vamos explorar como conectar seu aplicativo para usar seus próprios dados.
-
-### Preparar-se para desenvolver um aplicativo no Visual Studio Code
+## Preparar-se para desenvolver um aplicativo no Visual Studio Code
 
 Agora vamos explorar o uso da engenharia imediata em um aplicativo que usa o SDK do serviço OpenAI do Azure. Você desenvolverá seu aplicativo usando o Visual Studio Code. Os arquivos de código para seu aplicativo foram fornecidos em um repositório do GitHub.
 
@@ -181,11 +160,11 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
     
 4. Atualize os valores da configuração para incluir:
     - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
-    - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Azure OpenAI Studio).
+    - O **nome da implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Estúdio de IA do Azure).
     - O ponto de extremidade do seu serviço de pesquisa (o valor de **Url** na página de visão geral do seu recurso de pesquisa no portal do Azure).
     - Uma **chave** para seu recurso de pesquisa (disponível na página **Chaves** para seu recurso de pesquisa no portal do Azure - você pode usar qualquer uma das chaves de administrador)
-    - O nome do índice de pesquisa (que deve ser `margiestravel`).
-1. Salve o arquivo de configuração.
+    - O nome do índice de pesquisa (que deve ser `margies-index`).
+5. Salve o arquivo de configuração.
 
 ### Adicione código para usar o serviço Azure OpenAI
 
@@ -242,4 +221,4 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
 
 ## Limpar
 
-Quando terminar de usar o recurso do OpenAI do Azure, lembre-se de excluir o recurso no **portal do Azure** em `https://portal.azure.com`. Inclua também a conta de armazenamento e o recurso de pesquisa, pois eles podem incorrer em um custo relativamente grande.
+Quando terminar de usar o recurso OpenAI do Azure, lembre-se de excluir os recursos no **portal do Azure** em `https://portal.azure.com`. Inclua também a conta de armazenamento e o recurso de pesquisa, pois eles podem incorrer em um custo relativamente grande.
