@@ -78,6 +78,7 @@ Para implantar esses modelos, você usará o Estúdio de IA.
 1. No portal do Azure, navegue até o recurso OpenAI do Azure. Em seguida, use o link para abrir seu recurso no **Estúdio de IA do Azure**.
 1. No Estúdio de IA do Azure, na página **Implantações**, exiba as implantações de modelo existentes. Depois, crie uma nova implantação do modelo base **text-embedding-ada-002** com as seguintes configurações:
     - **Nome da implantação**: text-embedding-ada-002
+    - **Modelo**: text-embedding-ada-002
     - **Versão do modelo**: *a versão padrão*
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
