@@ -39,11 +39,11 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
 ## Implantar um modelo
 
-O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará a exploração do OpenAI do do Azure usando o Estúdio de IA do Azure para implantar um modelo.
+O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Estúdio de IA do Azure para implantar um modelo.
 
-> **Observação**: à medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
+> **Observação**: À medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
-1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **Estúdio de IA**.
+1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e selecione o botão para acessar o **AI Studio**.
 1. No Estúdio de IA do Azure, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
@@ -51,7 +51,7 @@ O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, qu
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
     - **Filtro de conteúdo**: Padrão
-    - **Habilitar cota dinâmica:**: desativado
+    - **Habilitar cota dinâmica**: Desabilitado
 
     > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
@@ -59,11 +59,11 @@ O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, qu
 
 Vamos começar explorando algumas técnicas de engenharia imediata no playground do Chat.
 
-1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma linha de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
-    - **Configuração** – usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
+1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma série de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
+    - **Configuração** - usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
     - **Sessão de chat** - usada para enviar mensagens de bate-papo e exibir respostas.
 2. Em **Implantações**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
-1. Revise a **Mensagem do sistema** padrão, que deve ser *Você é assistente de IA que ajuda as pessoas a encontrar informações.*
+1. Revise a **Mensagem do sistema** padrão, que deveria ser *Você é um assistente de IA que ajuda as pessoas a encontrar informações.*
 4. Na **sessão de chat**, envie a seguinte consulta:
 
     ```prompt
@@ -80,9 +80,9 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
     A resposta fornece uma descrição do artigo. No entanto, suponha que você queira um formato mais específico para categorização de artigos.
 
-5. Na seção **Configuração**, altere a mensagem do sistema para `You are a news aggregator that categorizes news articles.`
+5. Na seção **Configuração** altere a mensagem do sistema para `You are a news aggregator that categorizes news articles.`
 
-6. Na nova mensagem do sistema, clique no botão **Adicionar seção** e escolha **Exemplos**. Em seguida, adicione o seguinte exemplo.
+6. Na nova mensagem do sistema, selecione o botão **Adicionar seção** e escolha **Exemplos**. Em seguida, adicione o seguinte exemplo.
 
     **Usuário**:
     
@@ -127,7 +127,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
     Entertainment
     ```
 
-8. Use o botão **Aplicar alterações** na parte superior da seção **Configuração** para salvar as alterações.
+8. Use o botão ** Aplicar alterações** na parte superior da seção **Configuração** para salvar suas alterações.
 
 9. Na seção **Sessão de chat**, reenvie o seguinte prompt:
 
@@ -145,7 +145,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
     A combinação de uma mensagem de sistema mais específica e alguns exemplos de consultas e respostas esperadas resulta em um formato consistente para os resultados.
 
-10. Aaltere a mensagem do sistema de volta para o modelo padrão, que deve ser `You are an AI assistant that helps people find information.` sem exemplos. Em seguida, aplique as alterações.
+10. Altere a mensagem do sistema de volta para o modelo padrão, que deve ser `You are an AI assistant that helps people find information.` sem exemplos. Em seguida, aplique as alterações.
 
 11. Na seção **Sessão de chat**, envie o seguinte prompt:
 
@@ -210,7 +210,7 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
     
 4. Atualize os valores da configuração para incluir:
     - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
-    - O **nome da implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Estúdio de IA do Azure).
+    - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Estúdio de IA do Azure).
 5. Salve o arquivo de configuração.
 
 ## Adicione código para usar o serviço Azure OpenAI
@@ -340,6 +340,8 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
     - It specializes in elephants 
     - Call for donations to be given at our website
     ```
+
+    > **Dica**: Você pode descobrir que a digitação automática na VM não funciona bem com prompts de várias linhas. Se esse for o seu problema, copie todo o prompt e cole-o no Visual Studio Code.
 
 1. Observe a saída. Desta vez, você provavelmente verá o formato de um email com os animais específicos incluídos, bem como a chamada para doações.
 1. Em seguida, insira os seguintes prompts que especificam adicionalmente o conteúdo:

@@ -115,7 +115,7 @@ Para facilitar o uso de seus próprios dados em um prompt, você os indexará us
     - **Implantação de modelo**: text-embedding-ada-002
     - **Tipo de autenticação**: chave de API
     - **Reconheço que a conexão com um serviço OpenAI do Azure incorrerá em custos adicionais para minha conta**: selecionado
-1. Na próxima página, <u>não</u> selecione as opções para vetorizar imagens ou extrair dados com habilidades de IA.
+1. Na próxima página, <u>não</u> selecione a opção para vetorizar imagens ou extrair dados com habilidades de IA.
 1. Na próxima página, habilite a classificação semântica e agende o indexador para ser executado uma vez.
 1. Na página final, defina o **prefixo do nome Objetos** como `margies-index` e crie o índice.
 

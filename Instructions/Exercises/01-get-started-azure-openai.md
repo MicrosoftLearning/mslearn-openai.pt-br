@@ -39,11 +39,11 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
 ## Implantar um modelo
 
-O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará a exploração do OpenAI do do Azure usando o Estúdio de IA do Azure para implantar um modelo.
+O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Estúdio de IA do Azure para implantar um modelo.
 
-> **Observação**: à medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
+> **Observação**: À medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
-1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **Estúdio de IA**.
+1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e selecione o botão para acessar o **AI Studio**.
 1. No Estúdio de IA do Azure, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
@@ -51,7 +51,7 @@ O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, qu
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
     - **Filtro de conteúdo**: Padrão
-    - **Habilitar cota dinâmica:**: desativado
+    - **Habilitar cota dinâmica**: Desabilitado
 
     > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
@@ -61,8 +61,8 @@ Agora que implantou um modelo, você pode usá-lo para gerar respostas com base 
 
 > **Observação:** O playground *Chat* usa a API *ChatCompletions* em vez da API *Completions* mais antiga que é usada pelo playground *Completions*. O playground Completions é fornecido para compatibilidade com modelos mais antigos.
 
-1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma linha de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
-    - **Configuração** – usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
+1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma série de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
+    - **Configuração** - usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
     - **Sessão de chat** - usada para enviar mensagens de bate-papo e exibir respostas.
 1. Em **Implantações**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
 1. Revise a **Mensagem do sistema** padrão, que deve ser *Você é assistente de IA que ajuda as pessoas a encontrar informações.* A mensagem do sistema é incluída nos prompts enviados ao modelo e fornece contexto para as respostas do modelo; definir expectativas sobre como um agente de IA baseado no modelo deve interagir com o usuário.
@@ -136,6 +136,8 @@ Você explorou como a mensagem, os exemplos e os prompts do sistema podem ajudar
 ## Implante seu modelo em um aplicativo web
 
 Agora que explorou algumas das funcionalidades de um modelo de IA generativa no playground do Estúdio de IA do Azure, você pode implantar um aplicativo Web do Azure para fornecer uma interface básica de agente de IA por meio da qual os usuários podem conversar com o modelo.
+
+> **Observação**: o Estúdio de IA do Azure ainda está em versão prévia. Para alguns usuários, não é possível realizar a implantação no aplicativo Web devido a um bug no modelo no estúdio. Se for esse o caso, pule esta seção.
 
 1. No canto superior direito da página do playground **Chat**, no menu **Implantar em**, selecione **Um novo aplicativo web**.
 1. Na caixa de diálogo **Implantar em um aplicativo web**, crie um novo aplicativo web com as seguintes configurações:
