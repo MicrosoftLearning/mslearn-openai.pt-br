@@ -39,11 +39,11 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
 ## Implantar um modelo
 
-O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará a exploração do OpenAI do do Azure usando o Estúdio de IA do Azure para implantar um modelo.
+O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Estúdio de IA do Azure para implantar um modelo.
 
-> **Observação**: à medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
+> **Observação**: À medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
-1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **Estúdio de IA**.
+1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e selecione o botão para acessar o **AI Studio**.
 1. No Estúdio de IA do Azure, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
@@ -51,7 +51,7 @@ O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, qu
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
     - **Filtro de conteúdo**: Padrão
-    - **Habilitar cota dinâmica:**: desativado
+    - **Habilitar cota dinâmica**: Desabilitado
 
     > \* Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
