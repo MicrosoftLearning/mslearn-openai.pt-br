@@ -161,7 +161,7 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
     
 4. Atualize os valores da configuração para incluir:
     - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
-    - O **nome da implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Estúdio de IA do Azure).
+    - O **nome de implantação** que você especificou para a implantação do modelo gpt-35-turbo (disponível na página **Implantações** no Estúdio de IA do Azure).
     - O ponto de extremidade do seu serviço de pesquisa (o valor de **Url** na página de visão geral do seu recurso de pesquisa no portal do Azure).
     - Uma **chave** para seu recurso de pesquisa (disponível na página **Chaves** para seu recurso de pesquisa no portal do Azure - você pode usar qualquer uma das chaves de administrador)
     - O nome do índice de pesquisa (que deve ser `margies-index`).
