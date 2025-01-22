@@ -26,8 +26,8 @@ Antes de usar o Azure OpenAI para gerar imagens, você deve provisionar um recur
     > Os modelos DALL-E 3 \* só estão disponíveis nos recursos do Serviço OpenAI do Azure nas regiões **Leste dos EUA** e **Suécia Central**.
 
 1. Aguarde o fim da implantação. Em seguida, vá para o recurso OpenAI do Azure implantado no portal do Azure.
-1. Na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e selecione o botão para ir para o **AI Studio**.
-1. No Estúdio de IA do Azure, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma para DALL-E 3, crie uma nova implantação do modelo **dall-e-3** com as seguintes configurações:
+1. Na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **portal da Fábrica de IA** (antigo Estúdio de IA).
+1. No portal do Azure AI Foundry, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma para DALL-E 3, crie uma nova implantação do modelo **dall-e-3** com as seguintes configurações:
     - **Nome da implantação**: dalle3
     - **Versão do modelo**: *usar a versão padrão*
     - **Tipo de implantação**: Padrão
@@ -38,16 +38,16 @@ Antes de usar o Azure OpenAI para gerar imagens, você deve provisionar um recur
 
 ## Explorar a geração de imagens no playground de imagens
 
-Você pode usar o playground Imagens no **Estúdio de IA do Azure** para testar a geração de imagens.
+Você pode usar o playground Imagens no **Portal da Fábrica de IA do Azure** para testar a geração de imagens.
 
 1. Na seção **playground Imagens**, sua implantação do DALL-E 3 será selecionada automaticamente. Se não estiver, selecione a implantação no menu suspenso de implantação.
 1. Na caixa **Prompt**, insira uma descrição de uma imagem que você gostaria de gerar. Por exemplo, `An elephant on a skateboard` e, em seguida, selecione **Gerar** e veja a imagem gerada.
 
-    ![O playground Imagens no Estúdio de IA do Azure com uma imagem gerada.](../media/images-playground.png)
+    ![O playground Imagens do Portal da Fábrica de IA do Azure com uma imagem gerada.](../media/images-playground.png)
 
 1. Modifique o prompt para fornecer uma descrição mais específica. Por exemplo, `An elephant on a skateboard in the style of Picasso`. Em seguida, gere a nova imagem e examine os resultados.
 
-    ![O playground Imagens no Estúdio de IA do Azure com duas imagens geradas.](../media/images-playground-new-style.png)
+    ![O playground Imagens do Portal da Fábrica de IA do Azure com duas imagens geradas.](../media/images-playground-new-style.png)
 
 ## Usar a API REST para gerar imagens
 

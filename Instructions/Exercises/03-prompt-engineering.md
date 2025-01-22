@@ -39,12 +39,12 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
 ## Implantar um modelo
 
-O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Estúdio de IA do Azure para implantar um modelo.
+O Azure fornece um portal baseado na Web chamado **portal do Azure AI Foundry**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará a exploração do OpenAI do Azure usando o portal do Azure AI Foundry para implantar um modelo.
 
-> **Observação**: À medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
+> **Observação**: à medida que você usar o portal do Azure AI Foundry, poderão ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
-1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e selecione o botão para acessar o **AI Studio**.
-1. No Estúdio de IA do Azure, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **portal do AI Foundry** (antigo Estúdio de IA).
+1. No portal do Azure AI Foundry, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
     - **Versão do modelo**: *usar a versão padrão*
@@ -200,7 +200,7 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
     **Python**:
 
     ```
-    pip install openai==1.13.3
+    pip install openai==1.55.3
     ```
 
 3. No painel **Explorer**, na pasta **CSharp** ou **Python**, abra o arquivo de configuração do seu idioma preferido
@@ -210,7 +210,7 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
     
 4. Atualize os valores da configuração para incluir:
     - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
-    - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no Estúdio de IA do Azure).
+    - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no portal do Azure AI Foundry).
 5. Salve o arquivo de configuração.
 
 ## Adicione código para usar o serviço Azure OpenAI
