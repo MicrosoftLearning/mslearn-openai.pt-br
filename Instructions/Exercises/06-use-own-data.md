@@ -73,10 +73,10 @@ Você usará dois modelos de IA neste exercício:
 - Um modelo de inserção de texto para *vetorizar* o texto nos folhetos para que ele possa ser indexado de forma eficiente para uso em prompts de fundamentação.
 - Um modelo GPT que seu aplicativo pode usar para gerar respostas a prompts que são fundamentados em seus dados.
 
-Para implantar esses modelos, você usará o Estúdio de IA.
+Para implantar esses modelos, você usará a Fábrica de IA.
 
-1. No portal do Azure, navegue até o recurso OpenAI do Azure. Em seguida, use o link para abrir seu recurso no **Estúdio de IA do Azure**.
-1. No Estúdio de IA do Azure, na página **Implantações**, exiba as implantações de modelo existentes. Depois, crie uma nova implantação do modelo base **text-embedding-ada-002** com as seguintes configurações:
+1. No portal do Azure, navegue até o recurso OpenAI do Azure. Em seguida, use o link para abrir seu recurso no **Portal da Fábrica de IA do Azure**.
+1. No Portal da Fábrica de IA do Azure, na página **Implantações**, exiba as implantações de modelo existentes. Depois, crie uma nova implantação do modelo base **text-embedding-ada-002** com as seguintes configurações:
     - **Nome da implantação**: text-embedding-ada-002
     - **Modelo**: text-embedding-ada-002
     - **Versão do modelo**: *a versão padrão*
@@ -97,7 +97,7 @@ Para implantar esses modelos, você usará o Estúdio de IA.
 
 ## Crie um índice
 
-Para facilitar o uso de seus próprios dados em um prompt, você os indexará usando a Pesquisa de IA do Azure. Você usará o mdoel de inserção de texto implantado anteriormente durante o processo de indexação para *vetorizar* os dados de texto (o que resulta em cada token de texto no índice sendo representado por vetores numéricos, tornando-o compatível com a maneira como um modelo de IA generativa representa o texto)
+Para facilitar o uso de seus próprios dados em um prompt, você os indexará usando a Pesquisa de IA do Azure. Você usará o modelo de inserção de texto implantado anteriormente durante o processo de indexação para *vetorizar* os dados de texto (o que resulta em cada token de texto no índice sendo representado por vetores numéricos, tornando-o compatível com a maneira como um modelo de IA generativa representa o texto)
 
 1. No portal do Azure, navegue até o recurso Pesquisa de IA do Azure.
 1. Na página **Visão geral**, selecione **Importar e vetorizar dados**.
@@ -151,7 +151,7 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
     **Python**:
 
     ```
-    pip install openai==1.13.3
+    pip install openai==1.55.3
     ```
 
 3. No painel **Explorer**, na pasta **CSharp** ou **Python**, abra o arquivo de configuração do seu idioma preferido
@@ -161,7 +161,7 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
     
 4. Atualize os valores da configuração para incluir:
     - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
-    - O **nome de implantação** que você especificou para a implantação do modelo gpt-35-turbo (disponível na página **Implantações** no Estúdio de IA do Azure).
+    - O **nome da implantação** que você especificou para a implantação do modelo gpt-35-turbo (disponível na página **Implantações** no Portal da Fábrica de IA do Azure).
     - O ponto de extremidade do seu serviço de pesquisa (o valor de **Url** na página de visão geral do seu recurso de pesquisa no portal do Azure).
     - Uma **chave** para seu recurso de pesquisa (disponível na página **Chaves** para seu recurso de pesquisa no portal do Azure - você pode usar qualquer uma das chaves de administrador)
     - O nome do índice de pesquisa (que deve ser `margies-index`).

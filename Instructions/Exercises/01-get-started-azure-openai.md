@@ -5,7 +5,7 @@ lab:
 
 # Comece com o serviço Azure OpenAI
 
-O Serviço OpenAI do Azure traz os modelos de IA generativa desenvolvidos pelo OpenAI para a plataforma do Azure, permitindo que você desenvolva soluções avançadas de IA que se beneficiem da segurança, escalabilidade e integração de serviços fornecidos pela plataforma de nuvem do Azure. Nesse exercício, você aprenderá como começar a usar o OpenAI do Azure provisionando o serviço como um recurso do Azure e usando o Estúdio de IA do Azure para implantar e explorar modelos de IA generativa.
+O Serviço OpenAI do Azure traz os modelos de IA generativa desenvolvidos pelo OpenAI para a plataforma do Azure, permitindo que você desenvolva soluções avançadas de IA que se beneficiem da segurança, escalabilidade e integração de serviços fornecidos pela plataforma de nuvem do Azure. Nesse exercício, você aprenderá como começar a usar o OpenAI do Azure provisionando o serviço como um recurso do Azure e usando a Fábrica de IA do Azure para implantar e explorar modelos de IA generativa.
 
 No cenário deste exercício, você desempenhará o papel de um desenvolvedor de software encarregado de implementar um agente de IA que possa usar IA generativa para ajudar uma organização de marketing a melhorar sua eficácia em alcançar clientes e anunciar novos produtos. As técnicas utilizadas no exercício podem ser aplicadas a qualquer cenário em que uma organização pretenda utilizar modelos generativos de IA para ajudar os funcionários a serem mais eficazes e produtivos.
 
@@ -39,12 +39,12 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
 ## Implantar um modelo
 
-O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará sua exploração do OpenAI do Azure usando o Estúdio de IA do Azure para implantar um modelo.
+O Azure fornece um portal baseado na Web chamado **portal do Azure AI Foundry**, que você pode usar para implantar, gerenciar e explorar modelos. Você iniciará a exploração do OpenAI do Azure usando o portal do Azure AI Foundry para implantar um modelo.
 
-> **Observação**: À medida que você usa o Estúdio de IA do Azure, podem ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
+> **Observação**: à medida que você usar o portal do Azure AI Foundry, poderão ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
-1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e selecione o botão para acessar o **AI Studio**.
-1. No Estúdio de IA do Azure, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **portal do AI Foundry** (antigo Estúdio de IA).
+1. No portal do Azure AI Foundry, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
     - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
     - **Versão do modelo**: *usar a versão padrão*
@@ -57,7 +57,7 @@ O Azure fornece um portal baseado na Web chamado **Estúdio de IA do Azure**, qu
 
 ## Usar o playground Chat
 
-Agora que implantou um modelo, você pode usá-lo para gerar respostas com base em prompts de linguagem natural. O playground de *Chat* no Estúdio de IA do Azure fornece uma interface de chatbot para modelos GPT 3.5 e superiores.
+Agora que implantou um modelo, você pode usá-lo para gerar respostas com base em prompts de linguagem natural. O playground de *Chat* no Portal da Fábrica de IA do Azure fornece uma interface de chatbot para modelos GPT 3.5 e superiores.
 
 > **Observação:** O playground *Chat* usa a API *ChatCompletions* em vez da API *Completions* mais antiga que é usada pelo playground *Completions*. O playground Completions é fornecido para compatibilidade com modelos mais antigos.
 
@@ -135,9 +135,9 @@ Você explorou como a mensagem, os exemplos e os prompts do sistema podem ajudar
 
 ## Implante seu modelo em um aplicativo web
 
-Agora que explorou algumas das funcionalidades de um modelo de IA generativa no playground do Estúdio de IA do Azure, você pode implantar um aplicativo Web do Azure para fornecer uma interface básica de agente de IA por meio da qual os usuários podem conversar com o modelo.
+Agora que explorou algumas das funcionalidades de um modelo de IA generativa no playground da Fábrica de IA do Azure, você pode implantar um aplicativo Web do Azure para fornecer uma interface básica de agente de IA por meio da qual os usuários podem conversar com o modelo.
 
-> **Observação**: o Estúdio de IA do Azure ainda está em versão prévia. Para alguns usuários, não é possível realizar a implantação no aplicativo Web devido a um bug no modelo no estúdio. Se for esse o caso, pule esta seção.
+> **Observação**: para alguns usuários, não é possível realizar a implantação no aplicativo Web devido a um bug no modelo no estúdio. Se for esse o caso, pule esta seção.
 
 1. No canto superior direito da página do playground **Chat**, no menu **Implantar em**, selecione **Um novo aplicativo web**.
 1. Na caixa de diálogo **Implantar em um aplicativo web**, crie um novo aplicativo web com as seguintes configurações:
@@ -160,7 +160,7 @@ Agora que explorou algumas das funcionalidades de um modelo de IA generativa no 
 
     > **Observação**: Você implantou o *modelo* em um aplicativo Web, mas essa implantação não inclui as configurações e os parâmetros do sistema definidos no playground; portanto, a resposta pode não refletir os exemplos que você especificou no playground. Em um cenário real, você adicionaria lógica ao seu aplicativo para modificar o prompt para que ele incluísse os dados contextuais apropriados para os tipos de resposta que você deseja gerar. Esse tipo de personalização está além do escopo desse exercício de nível introdutório, mas você pode aprender sobre técnicas de engenharia imediata e APIs do Azure OpenAI em outros exercícios e na documentação do produto.
 
-1. Quando terminar de experimentar seu modelo no aplicativo Web, feche a guia do aplicativo Web no navegador para retornar ao Estúdio de IA do Azure.
+1. Quando terminar de experimentar seu modelo no aplicativo Web, feche a guia do aplicativo Web no navegador para retornar ao Portal da Fábrica de IA do Azure.
 
 ## Limpar
 
