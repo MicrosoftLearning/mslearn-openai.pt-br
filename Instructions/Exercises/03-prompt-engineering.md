@@ -59,12 +59,12 @@ O Azure fornece um portal baseado na Web chamado **portal do Azure AI Foundry**,
 
 Vamos começar explorando algumas técnicas de engenharia imediata no playground do Chat.
 
-1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma série de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
-    - **Configuração** - usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
-    - **Sessão de chat** - usada para enviar mensagens de bate-papo e exibir respostas.
-2. Em **Implantações**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
-1. Revise a **Mensagem do sistema** padrão, que deveria ser *Você é um assistente de IA que ajuda as pessoas a encontrar informações.*
-4. Na **sessão de chat**, envie a seguinte consulta:
+1. No painel lateral esquerdo, na seção **Playgrounds**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma série de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
+    - **Configuração** – usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
+    - **Histórico de chats** – usado para enviar mensagens de bate-papo e exibir respostas.
+2. Em **Implantação**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
+1. Revise a mensagem padrão do sistema na caixa de texto imediatamente abaixo da implantação selecionada, que será: *Você tem a função de assistente de IA que ajuda as pessoas a encontrar informações.*
+4. No **Histórico de chats**, envie a seguinte consulta:
 
     ```prompt
     What kind of article is this?
@@ -127,9 +127,9 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
     Entertainment
     ```
 
-8. Use o botão ** Aplicar alterações** na parte superior da seção **Configuração** para salvar suas alterações.
+8. Use o botão **Aplicar alterações** na caixa de texto de mensagem do sistema na seção **Configuração** para salvar suas alterações.
 
-9. Na seção **Sessão de chat**, reenvie o seguinte prompt:
+9. Na seção **Histórico de chats**, reenvie o seguinte prompt:
 
     ```prompt
     What kind of article is this?
@@ -147,7 +147,7 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
 10. Altere a mensagem do sistema de volta para o modelo padrão, que deve ser `You are an AI assistant that helps people find information.` sem exemplos. Em seguida, aplique as alterações.
 
-11. Na seção **Sessão de chat**, envie o seguinte prompt:
+11. Na seção **Histórico de chats**, envie o seguinte prompt:
 
     ```prompt
     # 1. Create a list of animals
@@ -359,7 +359,7 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
     - Rescue name is Contoso 
     - It specializes in elephants, as well as zebras and giraffes 
     - Call for donations to be given at our website 
-    \n Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
+    Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
     ```
 
 1. Observe o resultado e veja como o email mudou com base em suas instruções claras.
@@ -378,7 +378,7 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
     - Rescue name is Contoso 
     - It specializes in elephants, as well as zebras and giraffes 
     - Call for donations to be given at our website 
-    \n Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
+    Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
     ```
 
 1. Observe a saída. Desta vez, você provavelmente verá o email em um formato semelhante, mas com um tom muito mais informal. Você provavelmente até verá piadas incluídas.
