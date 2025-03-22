@@ -43,8 +43,6 @@ Você pode usar o playground Imagens no **Portal da Fábrica de IA do Azure** pa
 1. Na seção **playground Imagens**, sua implantação do DALL-E 3 será selecionada automaticamente. Se não estiver, selecione a implantação no menu suspenso de implantação.
 1. Na caixa **Prompt**, insira uma descrição de uma imagem que você gostaria de gerar. Por exemplo, `An elephant on a skateboard` e, em seguida, selecione **Gerar** e veja a imagem gerada.
 
-    ![O playground Imagens do Portal da Fábrica de IA do Azure com uma imagem gerada.](../media/images-playground.png)
-
 1. Modifique o prompt para fornecer uma descrição mais específica. Por exemplo, `An elephant on a skateboard in the style of Picasso`. Em seguida, gere a nova imagem e examine os resultados.
 
     ![O playground Imagens do Portal da Fábrica de IA do Azure com duas imagens geradas.](../media/images-playground-new-style.png)
