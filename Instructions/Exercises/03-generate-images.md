@@ -2,6 +2,7 @@
 lab:
   title: Gerar imagens com IA
   description: Saiba como usar um modelo OpenAI DALL-E para gerar imagens.
+  status: new
 ---
 
 # Gerar imagens com IA

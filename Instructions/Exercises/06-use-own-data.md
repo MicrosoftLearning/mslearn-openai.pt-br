@@ -1,6 +1,7 @@
 ---
 lab:
   title: Implementar a RAG (Geração Aumentada de Recuperação) com o Serviço Azure OpenAI
+  status: stale
 ---
 
 # Implementar a RAG (Geração Aumentada de Recuperação) com o Serviço Azure OpenAI
