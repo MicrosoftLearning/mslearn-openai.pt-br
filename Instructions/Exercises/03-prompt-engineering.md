@@ -1,6 +1,7 @@
 ---
 lab:
   title: Utilizar engenharia de prompt em seu aplicativo
+  status: stale
 ---
 
 # Utilizar engenharia de prompt em seu aplicativo

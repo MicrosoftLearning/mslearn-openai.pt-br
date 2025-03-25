@@ -1,6 +1,7 @@
 ---
 lab:
   title: Gerar e aprimorar o código com o Serviço OpenAI do Azure
+  status: stale
 ---
 
 # Gerar e aprimorar o código com o Serviço OpenAI do Azure

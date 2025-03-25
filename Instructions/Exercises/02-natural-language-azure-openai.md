@@ -1,6 +1,7 @@
 ---
 lab:
   title: Usar SDKs do Azure OpenAI em seu aplicativo
+  status: stale
 ---
 
 # Usar APIs do Azure OpenAI em seu aplicativo
