@@ -45,9 +45,9 @@ O Azure fornece um portal baseado na Web chamado **portal do Azure AI Foundry**,
 > **Observação**: à medida que você usar o portal do Azure AI Foundry, poderão ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
 1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **portal do AI Foundry** (antigo Estúdio de IA).
-1. No portal do Azure AI Foundry, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+1. No portal do Azure AI Foundry, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma, crie uma nova implantação do modelo **gpt-4o** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
-    - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
+    - **Modelo**: gpt-4o
     - **Versão do modelo**: *usar a versão padrão*
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
@@ -58,14 +58,14 @@ O Azure fornece um portal baseado na Web chamado **portal do Azure AI Foundry**,
 
 ## Usar o playground Chat
 
-Agora que implantou um modelo, você pode usá-lo para gerar respostas com base em prompts de linguagem natural. O playground de *Chat* no Portal da Fábrica de IA do Azure fornece uma interface de chatbot para modelos GPT 3.5 e superiores.
+Agora que implantou um modelo, você pode usá-lo para gerar respostas com base em prompts de linguagem natural. O playground de *Chat* no Portal da Fábrica de IA do Azure fornece uma interface de chatbot para modelos GPT 4 e superiores.
 
 > **Observação:** O playground *Chat* usa a API *ChatCompletions* em vez da API *Completions* mais antiga que é usada pelo playground *Completions*. O playground Completions é fornecido para compatibilidade com modelos mais antigos.
 
 1. Na seção **Playground**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma série de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
     - **Configuração** - usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
     - **Sessão de chat** - usada para enviar mensagens de bate-papo e exibir respostas.
-1. Em **Implantações**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
+1. Em **Implantações**, verifique se a implantação do modelo gpt-4o está selecionada.
 1. Revise a **Mensagem do sistema** padrão, que deve ser *Você é assistente de IA que ajuda as pessoas a encontrar informações.* A mensagem do sistema é incluída nos prompts enviados ao modelo e fornece contexto para as respostas do modelo; definir expectativas sobre como um agente de IA baseado no modelo deve interagir com o usuário.
 1. No painel **Sessão de chat**, insira a consulta do usuário `How can I use generative AI to help me market a new product?`
 
@@ -96,13 +96,13 @@ Até agora, você conversou por chat com seu modelo com base na mensagem padrão
 1. Na caixa de texto **Mensagem do sistema**, expanda a lista suspensa da **seção Adicionar** e selecione **Exemplos**. Em seguida, digite a seguinte mensagem e resposta nas caixas designadas:
 
     **Usuário**:
-    
+
     ```prompt
     Write an advertisement for the lightweight "Ultramop" mop, which uses patented absorbent materials to clean floors.
     ```
-    
+
     **Assistente:**
-    
+
     ```prompt
     Welcome to the future of cleaning!
     
@@ -147,7 +147,7 @@ Agora que explorou algumas das funcionalidades de um modelo de IA generativa no 
     - **Grupo de recursos**: *O grupo de recursos no qual você provisionou seu recurso Azure OpenAI*
     - **Localizações**: *A região onde você provisionou seu recurso Azure OpenAI*
     - **Plano de preços**: Gratuito (F1) - *Se não estiver disponível, selecione Básico (B1)*
-    - **Habilite o histórico de chat no aplicativo da web**: <u>Não</u> selecionado
+    - **Habilite o histórico de chat no aplicativo da web**: **Não** selecionado
     - **Reconheço que os aplicativos Web incorrerão no uso da minha conta**: Selecionado
 1. Implante o novo aplicativo da web e aguarde a conclusão da implantação (o que pode levar cerca de 10 minutos)
 1. Após a implantação bem-sucedida do seu aplicativo Web, use o botão no canto superior direito da página do **Chat** Playground para iniciar o aplicativo Web. O aplicativo pode levar alguns minutos para iniciar. Se solicitado, aceite a solicitação de permissões.
