@@ -45,9 +45,9 @@ O Azure fornece um portal baseado na Web chamado **portal do Azure AI Foundry**,
 > **Observação**: à medida que você usar o portal do Azure AI Foundry, poderão ser exibidas caixas de mensagens sugerindo tarefas para você executar. Você pode fechá-los e seguir as etapas desse exercício.
 
 1. No portal do Azure, na página **Visão geral** do recurso OpenAI do Azure, role para baixo até a seção **Introdução** e clique no botão para acessar o **portal do AI Foundry** (antigo Estúdio de IA).
-1. No portal do Azure AI Foundry, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma implantação, crie uma nova implantação do modelo **gpt-35-turbo-16k** com as seguintes configurações:
+1. No portal do Azure AI Foundry, no painel à esquerda, selecione a página **Implantações** e visualize as implantações de modelo existentes. Se você ainda não tiver uma, crie uma nova implantação do modelo **gpt-4o** com as seguintes configurações:
     - **Nome de implantação**: *um nome exclusivo de sua preferência*
-    - **Modelo**: gpt-35-turbo-16k *(se o modelo 16k não estiver disponível, escolha gpt-35-turbo)*
+    - **Modelo**: gpt-4o
     - **Versão do modelo**: *usar a versão padrão*
     - **Tipo de implantação**: Padrão
     - **Limite de taxa de tokens por minuto**: 5K\*
@@ -63,9 +63,9 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 1. No painel lateral esquerdo, na seção **Playgrounds**, selecione a página **Chat**. A página do playground do **Chat** consiste em uma série de botões e dois painéis principais (que podem ser organizados da direita para a esquerda na horizontal ou de cima para baixo na vertical, dependendo da resolução da tela):
     - **Configuração** – usada para selecionar sua implantação, definir a mensagem do sistema e definir parâmetros para interagir com sua implantação.
     - **Histórico de chats** – usado para enviar mensagens de bate-papo e exibir respostas.
-2. Em **Implantação**, certifique-se de que a implantação do modelo gpt-35-turbo-16k esteja selecionada.
+1. Em **Implantação**, certifique-se de que a implantação do modelo gpt-4o esteja selecionada.
 1. Revise a mensagem padrão do sistema na caixa de texto imediatamente abaixo da implantação selecionada, que será: *Você tem a função de assistente de IA que ajuda as pessoas a encontrar informações.*
-4. No **Histórico de chats**, envie a seguinte consulta:
+1. No **Histórico de chats**, envie a seguinte consulta:
 
     ```prompt
     What kind of article is this?
@@ -81,12 +81,12 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
     A resposta fornece uma descrição do artigo. No entanto, suponha que você queira um formato mais específico para categorização de artigos.
 
-5. Na seção **Configuração** altere a mensagem do sistema para `You are a news aggregator that categorizes news articles.`
+1. Na seção **Configuração** altere a mensagem do sistema para `You are a news aggregator that categorizes news articles.`
 
-6. Na nova mensagem do sistema, selecione o botão **Adicionar seção** e escolha **Exemplos**. Em seguida, adicione o seguinte exemplo.
+1. Na nova mensagem do sistema, selecione o botão **Adicionar seção** e escolha **Exemplos**. Em seguida, adicione o seguinte exemplo.
 
     **Usuário**:
-    
+
     ```prompt
     What kind of article is this?
     ---
@@ -98,17 +98,17 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
     
     The Chicago Cyclones' two hits came in the 2nd and the 5th innings but were unable to get the runner home to score.
     ```
-    
+
     **Assistente:**
-    
+
     ```prompt
     Sports
       ```
 
-7. Adicione outro exemplo com o texto a seguir.
+1. Adicione outro exemplo com o texto a seguir.
 
     **Usuário:**
-    
+
     ```prompt
     Categorize this article:
     ---
@@ -121,16 +121,16 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
     
     From Robin Kline's history-making win to a full performance by none other than Casey Jensen herself, don't miss tomorrows rerun of all the festivities.
     ```
-    
+
     **Assistente:**
-    
+
     ```prompt
     Entertainment
     ```
 
-8. Use o botão **Aplicar alterações** na caixa de texto de mensagem do sistema na seção **Configuração** para salvar suas alterações.
+1. Use o botão **Aplicar alterações** na caixa de texto de mensagem do sistema na seção **Configuração** para salvar suas alterações.
 
-9. Na seção **Histórico de chats**, reenvie o seguinte prompt:
+1. Na seção **Histórico de chats**, reenvie o seguinte prompt:
 
     ```prompt
     What kind of article is this?
@@ -146,9 +146,9 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
     A combinação de uma mensagem de sistema mais específica e alguns exemplos de consultas e respostas esperadas resulta em um formato consistente para os resultados.
 
-10. Altere a mensagem do sistema de volta para o modelo padrão, que deve ser `You are an AI assistant that helps people find information.` sem exemplos. Em seguida, aplique as alterações.
+1. Altere a mensagem do sistema de volta para o modelo padrão, que deve ser `You are an AI assistant that helps people find information.` sem exemplos. Em seguida, aplique as alterações.
 
-11. Na seção **Histórico de chats**, envie o seguinte prompt:
+1. Na seção **Histórico de chats**, envie o seguinte prompt:
 
     ```prompt
     # 1. Create a list of animals
@@ -158,10 +158,10 @@ Vamos começar explorando algumas técnicas de engenharia imediata no playground
 
     O modelo provavelmente responderá com uma resposta para satisfazer o prompt, dividido em uma lista numerada. Essa é uma resposta apropriada, mas suponha que o que você realmente queria era que o modelo escrevesse um programa Python que executasse as tarefas que você descreveu?
 
-12. Altere a mensagem do sistema para `You are a coding assistant helping write python code.` e aplique as alterações.
-13. Reenvie o seguinte prompt ao modelo:
+1. Altere a mensagem do sistema para `You are a coding assistant helping write python code.` e aplique as alterações.
+1. Reenvie o seguinte prompt ao modelo:
 
-    ```
+    ```prompt
     # 1. Create a list of animals
     # 2. Create a list of whimsical names for those animals
     # 3. Combine them randomly into a list of 25 animal and name pairs
@@ -176,7 +176,7 @@ Agora vamos explorar o uso da engenharia imediata em um aplicativo que usa o SDK
 > **Dica**: Se você já clonou o repositório **mslearn-openai**, abra-o no código do Visual Studio. Caso contrário, siga estas etapas para cloná-lo em seu ambiente de desenvolvimento.
 
 1. Inicie o Visual Studio Code.
-2. Abra a paleta (SHIFT+CTRL+P) e execute o comando **Git: Clone** para clonar o repositório `https://github.com/MicrosoftLearning/mslearn-openai` em uma pasta local (não importa qual pasta).
+2. Abra a paleta (SHIFT+CTRL+P ou **Exibir** > **Paleta de comandos...**) e execute o comando **Git: Clone** para clonar o repositório `https://github.com/MicrosoftLearning/mslearn-openai` em uma pasta local (não importa qual pasta).
 3. Depois que o repositório for clonado, abra a pasta no Visual Studio Code.
 
     > **Observação**: Se o Visual Studio Code mostrar uma mensagem pop-up para solicitar que você confie no código que está abrindo, clique na opção **Sim, confio nos autores** no pop-up.
@@ -194,21 +194,21 @@ Foram fornecidos aplicativos para C# e Python, e ambos os aplicativos apresentam
 
     **C#**:
 
-    ```
-    dotnet add package Azure.AI.OpenAI --version 1.0.0-beta.14
+    ```powershell
+    dotnet add package Azure.AI.OpenAI --version 2.1.0
     ```
 
     **Python**:
 
-    ```
-    pip install openai==1.55.3
+    ```powershell
+    pip install openai==1.65.2
     ```
 
 3. No painel **Explorer**, na pasta **CSharp** ou **Python**, abra o arquivo de configuração do seu idioma preferido
 
     - **C#**: appsettings.json
     - **Python**: .env
-    
+
 4. Atualize os valores da configuração para incluir:
     - O **ponto de extremidade** e uma **chave** do recurso Azure OpenAI que você criou (disponível na página **Chaves e Ponto de Extremidade** para seu recurso Azure OpenAI no portal do Azure)
     - O **nome de implantação** que você especificou para a implantação do modelo (disponível na página **Implantações** no portal do Azure AI Foundry).
@@ -225,6 +225,7 @@ Agora você está pronto para usar o SDK do Azure OpenAI para consumir seu model
     ```csharp
     // Add Azure OpenAI package
     using Azure.AI.OpenAI;
+    using OpenAI.Chat;
     ```
 
     **Python**: prompt-engineering.py
@@ -240,7 +241,8 @@ Agora você está pronto para usar o SDK do Azure OpenAI para consumir seu model
 
     ```csharp
     // Configure the Azure OpenAI client
-    OpenAIClient client = new OpenAIClient(new Uri(oaiEndpoint), new AzureKeyCredential(oaiKey));
+    AzureOpenAIClient azureClient = new (new Uri(oaiEndpoint), new ApiKeyCredential(oaiKey));
+    ChatClient chatClient = azureClient.GetChatClient(oaiDeploymentName);
     ```
 
     **Python**: prompt-engineering.py
@@ -260,20 +262,19 @@ Agora você está pronto para usar o SDK do Azure OpenAI para consumir seu model
 
     ```csharp
     // Format and send the request to the model
-    var chatCompletionsOptions = new ChatCompletionsOptions()
+    var chatCompletionsOptions = new ChatCompletionOptions()
     {
-        Messages =
-        {
-            new ChatRequestSystemMessage(systemMessage),
-            new ChatRequestUserMessage(userMessage)
-        },
         Temperature = 0.7f,
-        MaxTokens = 800,
-        DeploymentName = oaiDeploymentName
+        MaxOutputTokenCount = 800
     };
     
     // Get response from Azure OpenAI
-    Response<ChatCompletions> response = await client.GetChatCompletionsAsync(chatCompletionsOptions);
+    ChatCompletion response = await chatClient.CompleteChatAsync(
+        [
+            new SystemChatMessage(systemMessage),
+            new UserChatMessage(userMessage),
+        ],
+        chatCompletionsOptions);
     ```
 
     **Python**: prompt-engineering.py
