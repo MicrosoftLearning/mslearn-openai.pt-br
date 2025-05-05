@@ -21,16 +21,13 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
     - **Assinatura**: *Selecione uma assinatura do Azure que tenha sido aprovada para acesso ao serviço Azure OpenAI*
     - **Grupo de recursos**: *escolher ou criar um grupo de recursos*
     - **Região**: *faça uma escolha **aleatória** de uma das regiões a seguir*\*
-        - Leste da Austrália
-        - Leste do Canadá
         - Leste dos EUA
         - Leste dos EUA 2
-        - França Central
-        - Leste do Japão
         - Centro-Norte dos EUA
+        - Centro-Sul dos Estados Unidos
         - Suécia Central
-        - Norte da Suíça
-        - Sul do Reino Unido
+        - Oeste dos EUA
+        - Oeste dos EUA 3
     - **Nome**: *um nome exclusivo de sua preferência*
     - **Tipo de preço**: Standard S0
 

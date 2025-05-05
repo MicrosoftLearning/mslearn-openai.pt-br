@@ -25,15 +25,13 @@ Para concluir este exercício, você precisa de:
     - **Assinatura**: *Selecione uma assinatura do Azure que tenha sido aprovada para acesso ao serviço Azure OpenAI*
     - **Grupo de recursos**: *escolher ou criar um grupo de recursos*
     - **Região**: *faça uma escolha **aleatória** de uma das regiões a seguir*\*
-        - Leste do Canadá
         - Leste dos EUA
         - Leste dos EUA 2
-        - França Central
-        - Leste do Japão
         - Centro-Norte dos EUA
+        - Centro-Sul dos Estados Unidos
         - Suécia Central
-        - Norte da Suíça
-        - Sul do Reino Unido
+        - Oeste dos EUA
+        - Oeste dos EUA 3
     - **Nome**: *um nome exclusivo de sua preferência*
     - **Tipo de preço**: Standard S0
 
@@ -76,7 +74,11 @@ Você usará dois modelos de IA neste exercício:
 
 ## Implantar um modelo
 
-Em seguida, você implantará um recurso de modelo do OpenAI do Azure na CLI. No portal do Azure, clique no ícone do **Cloud Shell** na barra de menus superior e certifique-se de que o terminal esteja definido como **Bash**. Consulte esse exemplo e substitua as seguintes variáveis por seus próprios valores:
+Em seguida, você implantará modelos do OpenAI do Azure a partir do Cloud Shell.
+
+1. Use o botão **[\>_]** à direita da barra de pesquisa na parte superior da página para criar um novo Cloud Shell no portal do Azure, selecionando um ambiente do ***Bash***. O Cloud Shell fornece uma interface de linha de comando em um painel na parte inferior do portal do Azure.
+
+    > **Observação**: se você já criou uma Cloud Shell que usa um ambiente *PowerShell*, troque-o pelo ***Bash***.
 
 ```dotnetcli
 az cognitiveservices account deployment create \
