@@ -33,15 +33,13 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
     - **Assinatura**: *Selecione uma assinatura do Azure que tenha sido aprovada para acesso ao serviço Azure OpenAI*
     - **Grupo de recursos**: *escolher ou criar um grupo de recursos*
     - **Região**: *faça uma escolha **aleatória** de uma das regiões a seguir*\*
-        - Leste do Canadá
         - Leste dos EUA
         - Leste dos EUA 2
-        - França Central
-        - Leste do Japão
         - Centro-Norte dos EUA
+        - Centro-Sul dos Estados Unidos
         - Suécia Central
-        - Norte da Suíça
-        - Sul do Reino Unido
+        - Oeste dos EUA
+        - Oeste dos EUA 3
     - **Nome**: *um nome exclusivo de sua preferência*
     - **Tipo de preço**: Standard S0
 
@@ -51,19 +49,25 @@ Se ainda não tiver um, provisione um recurso OpenAI do Azure na sua assinatura 
 
 ## Implantar um modelo
 
-Em seguida, você implantará um recurso de modelo do OpenAI do Azure na CLI. Consulte este exemplo e substitua as seguintes variáveis por seus próprios valores acima:
+Em seguida, você implantará um recurso de modelo do OpenAI do Azure a partir do Cloud Shell.
 
-```dotnetcli
-az cognitiveservices account deployment create \
-   -g <your_resource_group> \
-   -n <your_OpenAI_service> \
-   --deployment-name gpt-4o \
-   --model-name gpt-4o \
-   --model-version 2024-05-13 \
-   --model-format OpenAI \
-   --sku-name "Standard" \
-   --sku-capacity 5
-```
+1. Use o botão **[\>_]** à direita da barra de pesquisa na parte superior da página para criar um novo Cloud Shell no portal do Azure, selecionando um ambiente do ***Bash***. O Cloud Shell fornece uma interface de linha de comando em um painel na parte inferior do portal do Azure.
+
+    > **Observação**: se você já criou uma Cloud Shell que usa um ambiente *PowerShell*, troque-o pelo ***Bash***.
+
+1. Consulte este exemplo e substitua as seguintes variáveis por seus próprios valores acima:
+
+    ```dotnetcli
+    az cognitiveservices account deployment create \
+       -g <your_resource_group> \
+       -n <your_OpenAI_service> \
+       --deployment-name gpt-4o \
+       --model-name gpt-4o \
+       --model-version 2024-05-13 \
+       --model-format OpenAI \
+       --sku-name "Standard" \
+       --sku-capacity 5
+    ```
 
 > **Observação**: a capacidade de SKU é medida em milhares de tokens por minuto. Um limite de taxa de 5.000 tokens por minuto é mais do que adequado para concluir este exercício, deixando capacidade para outras pessoas que usam a mesma assinatura.
 
@@ -245,7 +249,7 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
     - Rescue name is Contoso 
     - It specializes in elephants, as well as zebras and giraffes 
     - Call for donations to be given at our website 
-    \n Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
+    Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
     ```
 
 1. Observe o resultado e veja como o email mudou com base em suas instruções claras.
@@ -264,7 +268,7 @@ Agora que seu aplicativo foi configurado, execute-o para enviar sua solicitaçã
     - Rescue name is Contoso 
     - It specializes in elephants, as well as zebras and giraffes 
     - Call for donations to be given at our website 
-    \n Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
+    Include a list of the current animals we have at our rescue after the signature, in the form of a table. These animals include elephants, zebras, gorillas, lizards, and jackrabbits.
     ```
 
 1. Observe a saída. Desta vez, você provavelmente verá o email em um formato semelhante, mas com um tom muito mais informal. Você provavelmente até verá piadas incluídas.
